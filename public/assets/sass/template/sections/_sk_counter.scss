@@ -1,0 +1,118 @@
+.vs-counter1 {
+  margin-top: -120px;
+  z-index: 11;
+  position: relative;
+
+  @include respond-below(md) {
+    margin-top: -80px;
+  }
+}
+.counter-style1 {
+  display: flex;
+  border-radius: 30px 30px;
+  background-color: $third-theme-color;
+  overflow: hidden;
+  @include respond-below(lg) {
+    flex-direction: column;
+  }
+  .counter-thumb {
+    max-width: 342px;
+    width: 100%;
+    position: relative;
+    padding-left: 8px;
+    background-color: $theme-color;
+
+    @include respond-below(lg) {
+      max-width: unset;
+      padding: 0px;
+    }
+
+    img {
+      border-radius: 30px 0 0 30px;
+      @include respond-below(lg) {
+        border-radius: 0px;
+      }
+    }
+
+    &::after {
+      position: absolute;
+      content: "";
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0px;
+      background: linear-gradient(
+        270deg,
+        rgba(var(--bg-color-9-rgb), 0) 0%,
+        rgba(var(--theme-color-rgb), 0.5) 100%
+      );
+    }
+  }
+  .counter-states {
+    flex: 1;
+    display: grid;
+    place-content: center;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: 1fr;
+    min-height: 100%;
+
+    @include respond-below(lg) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    @include respond-below(x) {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+  }
+  .counter-box {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @include respond-below(lg) {
+      padding: 30px 0;
+      border-bottom: 1px dashed rgba(var(--white-color-rgb), 0.2);
+
+      &:nth-last-child(-n + 2) {
+        border-bottom: 0;
+      }
+    }
+    @include respond-below(x) {
+      &:nth-last-child(-n + 2) {
+        border-bottom: 1px dashed rgba(var(--white-color-rgb), 0.2);
+      }
+    }
+
+    &:not(:first-child) {
+      border-left: 1px dashed rgba(var(--white-color-rgb), 0.2);
+    }
+
+    svg {
+      color: $theme-color;
+    }
+    .counter-number {
+      color: $white-color;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: $body-font;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 0.9px;
+      text-transform: capitalize;
+      margin: 19px 0 5px;
+      em {
+        font-style: normal;
+      }
+    }
+    .counter-info {
+      color: #efefef;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 187.5%;
+      letter-spacing: 0.8px;
+      text-transform: capitalize;
+    }
+  }
+}

@@ -1,0 +1,100 @@
+
+
+.swiper-arrow {
+  background-color: var(--white-color);
+  position: absolute;
+  bottom: 0;
+  right: 25.15%;
+  left: auto;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  @include sm {
+    right: 0;
+  }
+  .vs-btn {
+    padding: 18px 15px;
+    background-color: transparent;
+    color: var(--title-color);
+    &::before,
+    &::after {
+      width: 101%;
+      background-color: var(--theme-color);
+    }
+    & > i {
+      margin-left: 0;
+    }
+    &:hover {
+      color: var(--title-color);
+    }
+  }
+}
+
+// Change animation presets
+[data-animation-in] {
+  opacity: 0;
+  animation-duration: 1.5s;
+  transition: opacity 0.5s ease 0.3s;
+}
+
+.swiper-arrow2 {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  button {
+    border: 1.5px dashed #909D81;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 50%;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+    svg{
+      color: #fff;
+    }
+    &::before,
+    &::after {
+      content: "";
+      width: 42.86px;
+      height: 42.86px;
+      background-color: #909D81;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: all 0.3s ease;
+      z-index: -1;
+    }
+    &:hover {
+      &::before,
+      &::after {
+        background-color: var(--theme-color);
+      }
+    }
+    &.active {
+      border-color: var(--theme-color);
+
+      &::before,
+      &::after {
+        background-color: var(--theme-color);
+      }
+    }
+  }
+}
+
+.slick-status {
+  transition: opacity 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.5px;
+  gap: 7px;
+  font-size: 16px;
+  font-weight: 700;
+  &__active {
+    color: var(--theme-color);
+  }
+}

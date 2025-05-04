@@ -1,0 +1,179 @@
+.awards-style1 {
+  background-color: rgba(var(--third-theme-color-rgb), 0.12);
+  position: relative;
+  z-index: 2;
+  .awards-icon-1,
+  .awards-icon-2 {
+    position: absolute;
+    z-index: 0;
+    @include respond-below(md) {
+      display: none;
+    }
+  }
+  .awards-icon-1 {
+    left: 50px;
+    bottom: 0;
+    @include respond-below(lg) {
+      left: 10px;
+    }
+  }
+  .awards-icon-2 {
+    left: 50%;
+    top: 30px;
+    @include respond-below(lg) {
+      top: 20px;
+    }
+  }
+}
+.google-reviewed {
+  max-width: 405px;
+  border-radius: 17px;
+  background: var(--white-color);
+  box-shadow: 0px 4px 4px 0px rgba(var(--black-color-rgb), 0.1);
+  display: flex;
+  align-items: center;
+
+  @include respond-below(ssm) {
+    flex-direction: column;
+    text-align: center;
+  }
+  > div {
+    padding: 30px 25px;
+    width: 100%;
+    @include respond-below(md) {
+      padding: 25px 20px;
+    }
+  }
+  .left {
+    @include respond-below(ssm) {
+      justify-content: center;
+    }
+  }
+  .right {
+    .rating {
+      @include respond-below(ssm) {
+        justify-content: center;
+      }
+    }
+    .review {
+      color: rgba(170, 172, 173, 0.9);
+    }
+  }
+}
+.award-box-style1__row {
+  position: relative;
+
+  @include respond-below(sm) {
+    margin-top: 15px !important;
+  }
+
+  .line-Shape {
+    position: absolute;
+    width: 118px;
+    height: 12px;
+    background-color: var(--third-theme-color);
+    left: calc(100% - 133px);
+    top: calc(100% + 84px);
+
+    @include respond-below(lg) {
+      top: calc(100% + 84px);
+    }
+    @include respond-below(md) {
+      top: calc(100% + 60px);
+    }
+  }
+}
+.award-box-style1 {
+  padding-top: 75px;
+  transition: all 0.3s;
+  .award-box-style1-wrapper {
+    border-radius: 17px;
+    background: var(--white-color);
+    box-shadow: 0px 4px 8px 0px rgba(var(--black-color), 0.1);
+    padding: 25px 30px;
+    position: relative;
+  }
+
+  .award-box-icon {
+    // position: absolute;
+    // left: 50%;
+    // top: -50px;
+    // transform: translateX(-50%);
+    margin-top: -75px;
+    text-align: center;
+
+    svg {
+      color: $third-theme-color;
+      transition: all 0.3s;
+    }
+  }
+
+  .award-box-header {
+    font-weight: 600;
+    h6 {
+      color: rgba(var(--bg-color-4-rgb), 0.9);
+    }
+  }
+  .award-box-body {
+    margin: 12px 0 30px;
+    position: relative;
+    z-index: 0;
+
+    &::before {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 2px;
+      background-color: rgba(var(--third-theme-color-rgb), 0.2);
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      border-radius: 50px;
+      z-index: -1;
+    }
+    span {
+      overflow: hidden;
+      padding: 17px 18px;
+      border-radius: 10px;
+      border: 2px solid rgba(var(--third-theme-color-rgb), 0.2);
+      display: inline-block;
+      line-height: 1;
+      text-transform: capitalize;
+      position: relative;
+      z-index: 1;
+      transition: all 0.3s;
+      &::before {
+        position: absolute;
+        content: "";
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 100%;
+        background-color: $theme-color;
+        z-index: -1;
+        transition: all 0.3s;
+      }
+    }
+  }
+  .award-box-footer {
+    p {
+      line-height: 1.4;
+    }
+  }
+  &:hover {
+    transform: translateY(-15px);
+    .award-box-icon {
+      svg {
+        color: $theme-color;
+      }
+    }
+    .award-box-body {
+      span {
+        color: $white-color;
+        &::before {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

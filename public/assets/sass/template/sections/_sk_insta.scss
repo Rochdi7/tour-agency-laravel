@@ -1,0 +1,54 @@
+.instagram-style1 {
+}
+
+.instagram-box {
+  position: relative;
+  z-index: 0;
+  .insta-post-thumb {
+  }
+  .insta-post-content {
+    position: absolute;
+    inset: 0;
+    background: rgba(var(--theme-color-rgb), 0.5);
+    display: grid;
+    place-content: center;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.3s;
+    z-index: 1;
+
+    a {
+      display: inline-grid;
+      place-content: center;
+      width: 81px;
+      height: 81px;
+      border-radius: 50%;
+      background-color: $white-color;
+      transition: all 0.3s;
+
+      @include respond-below(xl) {
+        width: 55px;
+        height: 55px;
+      }
+
+      i {
+        color: $theme-color;
+        transition: all 0.3s;
+      }
+
+      &:hover {
+        background-color: $theme-color;
+        i {
+          color: $white-color;
+        }
+      }
+    }
+  }
+
+  &:hover {
+    .insta-post-content {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}

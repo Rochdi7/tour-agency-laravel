@@ -1,0 +1,111 @@
+.breadcumb-menu {
+  max-width: 100%;
+  margin: 0em 0 0em 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  li {
+    display: inline-block;
+    list-style: none;
+    position: relative;
+
+    &:after {
+      content: "\f101";
+      font-family: var(--icon-font);
+      position: relative;
+      margin: 0 6px;
+      color: var(--theme-color);
+    }
+
+    &:last-child {
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  li,
+  a,
+  span {
+    white-space: normal;
+    word-break: break-word;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--bread-text-color);
+    text-transform: uppercase;
+    letter-spacing: 2.3px;
+    @include smooth-transition;
+  }
+  a {
+    color: var(--theme-color);
+    &:hover {
+      color: $theme-color;
+    }
+  }
+}
+
+.breadcumb-content {
+  text-align: left;
+}
+
+.breadcumb-title {
+  color: var(--white-color);
+  margin: -0.3em 0 10px 0;
+  max-width: 100%;
+  width: 100%;
+  line-height: 1.1;
+  text-transform: uppercase;
+  font-size: 70px;
+  @include sm {
+    font-size: 35px;
+  }
+}
+
+.breadcumb-wrapper {
+  background-color: var(--title-color);
+  position: relative;
+  min-height: 561px;
+  display: flex;
+  align-items: end;
+  padding: 129px 0 125px;
+  @include lg {
+    min-height: 420px;
+    padding: 167px 0 100px;
+  }
+  @include md {
+    padding-top: 200px;
+    padding-bottom: 50px;
+  }
+  @include sm {
+    min-height: 385px;
+  }
+
+  .breadcumb-element {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    z-index: 1;
+  }
+
+  .overlay {
+    background-color: var(--title-color);
+    opacity: 80%;
+  }
+}
+
+@include md {
+  .breadcumb-content {
+    display: block;
+  }
+
+  .breadcumb-title {
+    max-width: 100%;
+  }
+
+  .breadcumb-menu {
+    margin-top: 15px;
+  }
+}

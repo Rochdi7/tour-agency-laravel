@@ -1,0 +1,187 @@
+.accordion-style1 {
+  position: relative;
+  z-index: 1;
+
+  .accordion-item {
+    border: 1px solid rgba(var(--bg-color-4-rgb), 0.1);
+    background-color: var(--white-color);
+    border-radius: 10px;
+    box-shadow: 0px 1px 4px 0px rgba(var(--black-color-rgb), 0.1);
+    overflow: hidden;
+
+    &:not(:last-child) {
+      margin: 0 0 15px 0;
+    }
+  }
+  .accordion-header {
+    font-family: $body-font;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1;
+    text-transform: capitalize;
+  }
+  .accordion-button {
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    text-transform: inherit;
+    text-transform: inherit;
+    padding: 25px;
+
+    @include respond-below(ssm) {
+      padding: 15px;
+    }
+    @include respond-below(x) {
+      max-width: 90%;
+    }
+    &::after {
+      content: "\f067";
+      font: var(--fa-font-solid);
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      width: 42px;
+      height: 42px;
+      line-height: 42px;
+      border-radius: 100%;
+      transform: translateY(-50%);
+      color: var(--theme-color);
+      text-align: center;
+      font-size: 18px;
+      transition: all ease 0.4s;
+      background-image: unset;
+      display: grid;
+      place-content: center;
+      border: 2px dashed $theme-color;
+      @include smooth-transition;
+      @include respond-below(ssm) {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+      }
+      @include respond-below(x) {
+        right: -5px;
+      }
+    }
+    &:not(.collapsed) {
+      box-shadow: none;
+      background-color: transparent;
+
+      &::after {
+        font: var(--fa-font-solid);
+        content: "\f068";
+        color: var(--title-color);
+        background-color: transparent;
+        background-image: unset;
+        font-size: 18px;
+      }
+    }
+    :focus,
+    &:hover,
+    &:active {
+      box-shadow: none;
+    }
+    &:hover {
+      &::after {
+        color: var(--theme-color);
+        background-color: transparent;
+      }
+    }
+  }
+
+  .accordion-collapse {
+    padding: 0 25px;
+    @include respond-below(ssm) {
+      padding: 0 15px;
+    }
+    .accordion-body {
+      margin-top: 8px;
+      border-top: 1px solid var(--bg-color-7);
+      padding: 15px 0 25px;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 171.429%;
+      letter-spacing: 0.42px;
+      text-transform: capitalize;
+      @include respond-below(ssm) {
+        margin-top: 0px;
+        padding: 10px 0 15px;
+      }
+    }
+  }
+}
+
+.accordion-style2 {
+  .accordion-item {
+    border: 0;
+    border-radius: 0;
+    border-top: 1px solid rgba(var(--title-color-rgb), 0.2);
+
+    &:first-of-type > .accordion-header .accordion-button {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+    &:last-of-type > .accordion-header .accordion-button.collapsed {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+  .accordion-header {
+    font-family: var(--body-font);
+  }
+  .accordion-button {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    text-transform: inherit;
+    color: inherit;
+    padding-inline: 0;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    &:not(.collapsed) {
+      color: inherit;
+    }
+    &::after {
+      background-image: unset;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      font: var(--fa-font-regular);
+      content: "\f055";
+      color: $theme-color;
+      position: relative;
+      margin: 0;
+      display: grid;
+      place-content: center;
+    }
+    &:not(.collapsed) {
+      background-color: transparent;
+      box-shadow: none;
+      &::after {
+        content: "\f056";
+      }
+    }
+    &:active,
+    &:hover,
+    &:focus {
+      box-shadow: none;
+    }
+  }
+  .accordion-body {
+    padding-top: 0;
+    padding-inline: 0;
+    line-height: 185.714%;
+    letter-spacing: 0.42px;
+    text-transform: capitalize;
+    padding-bottom: 35px;
+    color: $body-color;
+
+    @include respond-below(lg) {
+      padding-bottom: 20px;
+    }
+  }
+}

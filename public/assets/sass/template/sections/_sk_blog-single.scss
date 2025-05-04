@@ -1,0 +1,370 @@
+.blog-single {
+  .blog-content {
+    @include respond-above(lg) {
+      padding-bottom: 50px;
+    }
+    .blog-title {
+      font-family: $title-font;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      text-transform: capitalize;
+    }
+    .blog-text {
+      font-family: Rubik;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 300;
+      text-transform: capitalize;
+    }
+    .vs-quote {
+      border-radius: 30px;
+      box-shadow: 0 8px 0 $theme-color;
+      padding: 30px 28px;
+      display: flex;
+      gap: 22px;
+      margin-bottom: 40px;
+
+      @include respond-below(md) {
+        margin-bottom: 20px;
+      }
+      .quote-icon {
+        margin-top: 10px;
+      }
+      .quote-content {
+        p {
+          color: $title-color;
+          font-family: $title-font;
+          font-size: 24px;
+          font-style: normal;
+          font-weight: 400;
+          text-transform: capitalize;
+        }
+
+        cite {
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 1;
+          text-transform: uppercase;
+          padding-left: 35px;
+          position: relative;
+          color: $body-color;
+          margin-top: 12px;
+          display: inline-block;
+
+          @include respond-below(md) {
+            margin-top: 6px;
+          }
+
+          &::before {
+            position: absolute;
+            content: "";
+            width: 25px;
+            height: 4px;
+            border-radius: 3px;
+            background: $theme-color;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+          }
+        }
+      }
+    }
+    .block-tag-cloud {
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      font-family: $body-font;
+
+      .title {
+        color: $title-color;
+        font-weight: 700;
+        line-height: normal;
+        text-transform: uppercase;
+        margin-right: 7px;
+      }
+      .tag-cloud-link {
+        font-weight: 500;
+        color: $body-color;
+        &:not(:last-of-type) {
+          margin-right: 7px;
+        }
+
+        &:hover {
+          color: $theme-color;
+        }
+      }
+    }
+  }
+  &:hover {
+    .blog-img {
+      img {
+        transform: initial;
+      }
+    }
+  }
+
+  .blog-single-author {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    border-radius: 20px;
+    background-color: $second-theme-color;
+    overflow: hidden;
+    padding: 35px 30px;
+    margin-top: 50px;
+    @include respond-below(lg) {
+      gap: 20px;
+      border-radius: 10px;
+      padding: 25px 20px;
+      margin-top: 30px;
+    }
+    @include respond-below(sm) {
+      flex-direction: column;
+    }
+
+    .media-img {
+      width: 140px;
+      height: 140px;
+      flex-shrink: 0;
+      border: 4px solid $theme-color;
+      border-radius: 50%;
+      overflow: hidden;
+
+      @include respond-below(lg) {
+        width: 100px;
+        height: 100px;
+      }
+    }
+    .media-body {
+      .author-name {
+        font-weight: 400;
+        text-transform: capitalize;
+        color: $white-color;
+        margin-bottom: 8px;
+      }
+      .author-text {
+        color: #d8dada;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 162.5%;
+        text-transform: capitalize;
+
+        @include respond-below(sm) {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  .post-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-top: 40px;
+
+    @include respond-below(lg) {
+      margin-top: 20px;
+    }
+
+    .post-pagi-box {
+      color: $title-color;
+      font-family: $body-font;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.48px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      @include smooth-transition;
+
+      @include respond-below(sm) {
+        gap: 5px;
+        font-size: 14px;
+      }
+      i,
+      svg {
+        color: $theme-color;
+      }
+
+      &:hover {
+        color: $theme-color;
+      }
+    }
+  }
+  .vs-comments-wrap {
+    margin-top: 80px;
+
+    @include respond-below(lg) {
+      margin-top: 40px;
+    }
+
+    .blog-inner-title {
+    }
+    .comment-list {
+      .vs-comment-item {
+      }
+    }
+    .vs-post-comment {
+      margin: 40px 0 40px 0;
+    }
+    .vs-post-comment-inner {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      @include respond-below(md) {
+        flex-direction: column;
+        align-items: start;
+      }
+    }
+    .comment-content {
+      border: 1px dashed rgba(6, 47, 52, 0.4);
+      padding: 30px 25px;
+      border-radius: 10px;
+    }
+    .reply_and_edit {
+      margin-left: 138px;
+      .replay-btn {
+        margin-left: 30px;
+        margin-top: 20px;
+        color: $theme-color;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: 0.48px;
+        text-transform: uppercase;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      @include respond-below(md) {
+        margin-left: 0;
+      }
+    }
+    .children {
+      margin-left: 60px;
+
+      @include respond-below(md) {
+        margin-left: 40px;
+      }
+    }
+    .comment-avater {
+      width: 118px;
+      height: 118px;
+      flex-shrink: 0;
+      border: 4px solid $theme-color;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      img {
+        transform: scale(1.08);
+      }
+
+      @include respond-below(md) {
+        width: 90px;
+        height: 90px;
+      }
+    }
+    .comment-content {
+      .content-header {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        margin-bottom: 10px;
+
+        @include respond-below(lg) {
+          margin-bottom: 8px;
+        }
+
+        .name {
+          font-weight: 400;
+          text-transform: capitalize;
+          line-height: 1;
+        }
+        .commented-on {
+          display: inline-block;
+          color: $theme-color;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 600;
+          letter-spacing: 0.48px;
+          text-transform: uppercase;
+          line-height: 1;
+        }
+      }
+      .text {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 175%;
+        text-transform: capitalize;
+
+        @include respond-below(md) {
+          font-size: 14px;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+  .vs-comment-form {
+    margin-top: 55px;
+    border-radius: 15px;
+    border: 1px solid rgba(var(--second-theme-color-rgb), 0.1);
+    background: rgba(var(--theme-color-rgb), 0.1);
+    padding: 40px 50px 50px;
+
+    @include respond-below(md) {
+      padding: 20px 30px 30px;
+    }
+
+    .form-text {
+      color: $body-color;
+      font-family: $body-font;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      text-transform: capitalize;
+      margin-top: 15px;
+      margin-bottom: 30px;
+
+      @include respond-below(lg) {
+        margin-top: 10px;
+        margin-bottom: 20px;
+      }
+    }
+
+    .form-group {
+      .form-control {
+        background-color: $white-color;
+        border: 1px dashed rgba(6, 47, 52, 0.4);
+        padding-inline: 26px;
+      }
+      input.form-control {
+        height: 70px;
+        padding: 0 26px;
+
+        @include respond-below(md) {
+          height: 55px;
+        }
+      }
+    }
+    .custom-checkbox {
+      margin: 24px 0 38px;
+      @include respond-below(md) {
+        margin: 20px 0;
+      }
+      label {
+        &::before {
+          border: 1px dashed rgba(6, 47, 52, 0.4);
+        }
+      }
+    }
+    .vs-btn {
+      border-radius: 50px;
+    }
+  }
+}

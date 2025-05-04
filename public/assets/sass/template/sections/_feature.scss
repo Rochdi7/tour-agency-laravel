@@ -1,0 +1,15 @@
+.feature-style {
+  text-align: center;
+  &__title {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--white-color);
+    margin: 0 0 15px 0;
+    text-transform: capitalize;
+  }
+  &__text {
+    color: var(--smoke-color);
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+}

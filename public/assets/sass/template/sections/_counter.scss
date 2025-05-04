@@ -1,0 +1,109 @@
+.offer-counter {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  text-align: center;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+  @include sm {
+    justify-content: center;
+  }
+  .count-number {
+    background-color: var(--bg-color12);
+    border-radius: 50%;
+    @include equal-size(65px);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--bg-color9);
+    margin-bottom: 15px;
+  }
+  .count-name {
+    display: block;
+    color: var(--text-color5);
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+}
+
+.img-box6 {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  max-width: 35%;
+  @include lg {
+    max-width: 45%;
+  }
+  @include md {
+    position: relative;
+    max-width: 100%;
+    margin-bottom: var(--section-space-mobile);
+    margin-top: calc(-1 * var(--section-space-mobile));
+    background-color: var(--bg-color4);
+  }
+  .img1 {
+    height: 100%;
+    object-fit: cover;
+    @include md {
+      width: 100%;
+    }
+  }
+  .img-content {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 53px;
+    text-align: center;
+    h3 {
+      color: var(--rating-color1);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 3.9px;
+      font-family: var(--body-font);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+  }
+  .img-offer {
+    display: inline-flex;
+    align-items: center;
+    border: 2px solid var(--rating-color1);
+    font-size: 34px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.7px;
+    color: var(--rating-color1);
+    margin-bottom: 15px;
+    span {
+      padding: 15px 11px;
+      &:last-child {
+        color: var(--bg-color9);
+        background-color: var(--rating-color1);
+      }
+    }
+  }
+}
+
+.deal-content {
+  .sec-title {
+    font-size: 60px;
+    text-transform: capitalize;
+    margin: -0.25em 0 5px 0;
+  }
+  .sec-text2 {
+    display: block;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    overflow: hidden;
+    animation-delay: 0.2s;
+    color: var(--text-color3);
+    font-weight: 700;
+  }
+}

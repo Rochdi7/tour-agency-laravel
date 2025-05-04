@@ -1,0 +1,168 @@
+.vs-pagination {
+  display: flex;
+  align-items: center;
+  margin: 70px 0 30px;
+  gap: 0px;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    a {
+      background-color: transparent;
+      border: 2px solid var(--bg-color3);
+    }
+  }
+
+  li {
+    display: inline-block;
+    margin: 0 0px;
+    list-style-type: none;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  span,
+  a {
+    --icon-size: 48px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--body-font);
+    color: var(--pagi-text-color);
+    text-align: center;
+    position: relative;
+    border: none;
+    width: var(--icon-size);
+    height: var(--icon-size);
+    font-weight: 700;
+    font-size: 16px;
+    z-index: 1;
+    background-color: var(--bg-color3);
+    border-radius: 0px;
+    letter-spacing: 0.8px;
+
+    &.active,
+    &:hover {
+      color: $theme-color;
+      box-shadow: none;
+    }
+  }
+  &.pagi-shop {
+    margin: 15px 0 30px;
+  }
+}
+
+.post-pagination {
+  margin: 0 0;
+}
+
+.post-pagi-box {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  > a {
+    color: $title-color;
+    font-weight: 600;
+    font-size: 16px;
+    font-family: $title-font;
+
+    &:hover {
+      color: $theme-color;
+    }
+  }
+
+  img {
+    width: 80px;
+    margin-right: 25px;
+  }
+
+  &.next {
+    flex-direction: row-reverse;
+    text-align: right;
+
+    img {
+      margin-right: 0;
+      margin-left: 25px;
+    }
+  }
+  .post-pagi-icon {
+    @include equal-size(60px);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--theme-color);
+    color: var(--white-color);
+    border-radius: 50%;
+    font-size: 20px;
+    &:hover {
+      background-color: var(--theme-color2);
+      color: var(--title-color);
+    }
+  }
+  .post-pagi-title {
+    font-size: 20px;
+    margin-bottom: 6px;
+    @include respond-below(md) {
+      font-size: 18px;
+    }
+  }
+  .post-pagi-control {
+    font-size: 13px;
+    color: var(--smoke-color);
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    gap: 15px;
+    i {
+      color: var(--theme-color);
+    }
+    &:hover {
+      color: var(--theme-color);
+    }
+  }
+}
+
+.pagi-icon {
+  color: #f0f0f0;
+  font-size: 40px;
+}
+
+@include sm {
+  .vs-pagination {
+    span,
+    a {
+      width: 35px;
+      height: 35px;
+      line-height: 35px;
+      font-size: 14px;
+      padding: 0 10px;
+    }
+  }
+
+  .post-pagi-box {
+    > a {
+      font-size: 12px;
+    }
+
+    img {
+      width: 40px;
+      margin-right: 15px;
+    }
+
+    &.next img {
+      margin-right: 0;
+      margin-left: 15px;
+    }
+  }
+}

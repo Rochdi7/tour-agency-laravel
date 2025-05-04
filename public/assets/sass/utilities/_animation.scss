@@ -1,0 +1,324 @@
+.fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+}
+
+.wow-animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.fadein {
+  --animation-name: fadein-custom;
+}
+
+.slideinup {
+  --animation-name: slideinup;
+}
+
+.slideindown {
+  --animation-name: slideindown;
+}
+
+.slideinleft {
+  --animation-name: slideinleft;
+}
+
+.slideinright {
+  --animation-name: slideinright;
+}
+
+.vs-animated {
+  animation-fill-mode: both;
+  animation-iteration-count: 1;
+  animation-duration: 1s;
+  animation-delay: 0.3s;
+  animation-name: var(--animation-name);
+}
+
+.animated {
+  transition: all 0.5s ease-in-out;
+}
+
+.ripple-animation {
+  animation-duration: var(--ripple-ani-duration);
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-name: ripple;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 0.4;
+  }
+
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes slideinup {
+  0% {
+    opacity: 0;
+    transform: translateY(70px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideindown {
+  0% {
+    opacity: 0;
+    transform: translateY(-70px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideinleft {
+  0% {
+    opacity: 0;
+    transform: translateX(-70px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideinright {
+  0% {
+    opacity: 0;
+    transform: translateX(70px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadein-custom {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes vsfadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+    -ms-transform: translateY(20px);
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.vs-hero {
+  .slick-current {
+    --animation-name: slideinup;
+    --animation-name2: slideinright;
+    --animation-name3: fadeInLeft;
+  }
+}
+
+.animate-elements {
+  .hero-subtitle,
+  .hero-text,
+  .hbtn1,
+  .hero-img1,
+  .hero-img2,
+  .hero-img3,
+  .hero-img4,
+  .hero-title .htext1,
+  .hero-title .htext2 {
+    animation-fill-mode: both;
+    animation-iteration-count: 1;
+    animation-duration: 1s;
+    animation-delay: 0.3s;
+    animation-name: var(--animation-name);
+  }
+  .hero-img3 {
+    animation-name: var(--animation-name2);
+  }
+  .hero-img1 {
+    animation-name: var(--animation-name3);
+  }
+  .hero-img3.style2 {
+    animation-name: var(--animation-name);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 8%, 0);
+    transform: translate3d(0, 8%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+
+@keyframes treeSway {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(8deg);
+  }
+
+  50% {
+    transform: rotate(-8deg);
+  }
+
+  75% {
+    transform: rotate(5deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* Apply the animation */
+.animate-tree {
+  transform-origin: bottom right;
+  animation: treeSway 3s infinite ease-in-out;
+}
+
+@keyframes parachuteFloat3D {
+  0% {
+    transform: translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg);
+  }
+  20% {
+    transform: translate3d(-8px, -8px, 5px) rotateX(5deg) rotateY(-5deg);
+  }
+  40% {
+    transform: translate3d(8px, -4px, -5px) rotateX(-5deg) rotateY(5deg);
+  }
+  60% {
+    transform: translate3d(-6px, 6px, 3px) rotateX(3deg) rotateY(-3deg);
+  }
+  80% {
+    transform: translate3d(6px, 4px, -3px) rotateX(-3deg) rotateY(3deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg);
+  }
+}
+
+/* Apply the animation */
+.animate-parachute {
+  transform-origin: center top;
+  animation: parachuteFloat3D 5s infinite ease-in-out;
+}
+@keyframes slide_plain {
+  from {
+    left: -81px;
+  }
+  40% {
+    left: 20%;
+  }
+  80% {
+    left: 70%;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes slide_plain2 {
+  0% {
+    left: -81px;
+    animation-timing-function: ease-in;
+  }
+  10% {
+    left: 0%;
+    animation-timing-function: linear;
+  }
+  40% {
+    left: 20%;
+  }
+  80% {
+    left: 70%;
+  }
+  90% {
+    left: 90%;
+    animation-timing-function: ease-out;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.animate-plain {
+  transform-origin: center top;
+  animation: slide_plain 8s linear infinite;
+}
+.animate-plain-2 {
+  transform-origin: center top;
+  animation: slide_plain2 8s linear infinite reverse;
+}
+
+.animate-linear {
+  transition-timing-function: linear !important;
+}
+
+.swing {
+  animation: swing 2.5s infinite ease-in-out;
+  transform-origin: top center;
+}
+@keyframes swing {
+  0%,
+  100% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+}
+
+@keyframes forward-backward {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(5px);
+  }
+}
+
+.forward-backward {
+  animation: forward-backward 2.5s infinite cubic-bezier(0.4, 0, 0.2, 1) alternate;
+}

@@ -1,0 +1,49 @@
+@each $bgcolorMap, $value in $bgcolorMap {
+  .bg-#{$bgcolorMap} {
+    background-color: #{$value} !important;
+  }
+}
+.bg-theme-color {
+  background-color: $theme-color;
+}
+.bg-second-theme-color {
+  background-color: $second-theme-color;
+}
+.bg-third-theme-color {
+  background-color: $third-theme-color;
+}
+.bg-white-color {
+  background-color: $white-color;
+}
+.bg-title-color {
+  background-color: $title-color;
+}
+
+.bg-third-theme {
+  background-color: $third-theme-color;
+}
+.bg-third-theme-12 {
+  background-color: rgba(var(--third-theme-color-rgb), 0.12);
+}
+.bg-theme-07 {
+  background-color: rgba(var(--theme-color-rgb), 0.07);
+}
+.bg-third-theme-14 {
+  background-color: rgba(var(--third-theme-color-rgb), 0.14);
+}
+
+.background-image,
+[data-bg-src] {
+  @include background-content(no-repeat, cover, center center);
+}
+
+.bg-fluid {
+  @include background-content(no-repeat, 100% 100%, center center);
+}
+
+.bg-auto {
+  background-size: auto auto;
+}
+.bg-color-5 {
+  background-color: var(--bg-color-5);
+}

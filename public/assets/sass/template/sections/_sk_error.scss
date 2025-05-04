@@ -1,0 +1,76 @@
+.error-content {
+  .sec-title {
+    font-size: 150px;
+    font-weight: 400;
+    line-height: 1;
+    text-transform: capitalize;
+    margin-bottom: 12px;
+
+    @include respond-below(lg) {
+      font-size: 130px;
+      margin-bottom: 6px;
+    }
+    @include respond-below(md) {
+      font-size: 120px;
+      margin-bottom: 6px;
+    }
+  }
+  .sec-subtitle {
+    display: inline-block;
+    color: $title-color;
+    font-family: $body-font;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 93.333%;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+
+    @include respond-below(lg) {
+      font-size: 28px;
+    }
+    @include respond-below(md) {
+      font-size: 25px;
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+    }
+    @include respond-below(sm) {
+      font-size: 20px;
+    }
+
+    &::after {
+      position: absolute;
+      content: "";
+      width: 195px;
+      height: 3px;
+      bottom: 0px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: $theme-color;
+    }
+  }
+  .error-text {
+    max-width: 482px;
+    margin-inline: auto;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 162.5%;
+    text-transform: capitalize;
+  }
+  .vs-btn {
+    padding: 24px 41px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 35px;
+    text-transform: capitalize;
+
+    @include respond-below(md) {
+      font-size: 18px;
+      padding: 20px 35px;
+      margin-top: 20px;
+    }
+  }
+}

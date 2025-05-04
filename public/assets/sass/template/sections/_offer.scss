@@ -1,0 +1,82 @@
+.offer-style {
+  display: flex;
+  gap: 20px;
+  background: linear-gradient(269.94deg, #f4eddb 0.05%, #ffffff 99.95%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.03);
+  min-height: 315px;
+  clip-path: polygon(
+    5% 0,
+    95% 0,
+    100% 10%,
+    100% 90%,
+    95% 100%,
+    5% 100%,
+    0 90%,
+    0 10%
+  );
+  align-items: stretch;
+  @include sm {
+    flex-wrap: wrap;
+    justify-content: center;
+    clip-path: polygon(
+      5% 0,
+      95% 0,
+      100% 5%,
+      100% 95%,
+      95% 100%,
+      5% 100%,
+      0 95%,
+      0 5%
+    );
+  }
+  .offer-subtitle {
+    display: block;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--theme-color);
+    letter-spacing: 1.8px;
+    margin: 0 0 5px 0;
+  }
+  .offer-title {
+    font-size: 40px;
+    color: var(--title-color);
+    text-transform: capitalize;
+    line-height: 1.2;
+    margin: 0 0 20px 0;
+    @include sm {
+      font-size: 30px;
+    }
+    a {
+      color: var(--title-color);
+      &:hover {
+        color: var(--theme-color);
+      }
+    }
+  }
+  .offer-body {
+    flex: 0 0 50%;
+    align-self: center;
+    padding: 15px;
+    @include sm {
+      flex: 0 0 100%;
+      padding: 0px 25px 35px;
+      text-align: center;
+    }
+  }
+  .offer-img {
+    display: flex;
+    align-items: center;
+    img {
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+  .vs-btn {
+    background-color: var(--white-color);
+    padding: 19px 28px;
+    &::before,
+    &::after {
+      background-color: var(--theme-color);
+    }
+  }
+}

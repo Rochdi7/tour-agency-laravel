@@ -1,0 +1,35 @@
+.contact-info {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--smoke-color);
+  text-transform: capitalize;
+  max-width: 82%;
+  span {
+    color: var(--text-color8);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+}
+
+.address-info {
+  display: flex;
+  align-items: center;
+  gap: 19px;
+  font-size: 14px;
+  color: var(--text-color8);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  padding: 20px 0;
+  border-top: 1px dashed rgb(156, 155, 155, 50%);
+  &:last-child {
+    border-bottom: 1px dashed rgb(156, 155, 155, 50%);
+  }
+  a {
+    color: var(--smoke-color);
+    &:hover {
+      color: var(--theme-color);
+    }
+  }
+}

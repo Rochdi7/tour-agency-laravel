@@ -1,0 +1,16 @@
+@mixin text-style1 {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--smoke-color);
+  font-family: var(--body-font);
+}
+.icon-box {
+  display: flex;
+  align-items: center;
+  gap: 18.25px;
+  &__title {
+    @include text-style1;
+    margin-bottom: 0;
+  }
+}

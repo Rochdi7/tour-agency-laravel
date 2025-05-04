@@ -1,0 +1,86 @@
+.about-icon-1,
+.about-icon-2 {
+  position: absolute;
+  z-index: -1;
+  @include respond-below(sm) {
+    display: none;
+  }
+}
+.about-icon-1 {
+  left: 0;
+  top: 85px;
+
+  @include respond-below(lg) {
+    top: 50px;
+  }
+}
+.about-icon-2 {
+  top: 190px;
+  right: 90px;
+
+  @include respond-below(lg) {
+    top: 160px;
+    right: 50px;
+  }
+}
+
+.about-info-area {
+  position: relative;
+
+  @include respond-above(md) {
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      width: 3px;
+      height: 104%;
+      border-radius: 15px;
+      border-radius: 15px;
+      background: rgba(70, 91, 45, 0.15);
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
+.about-info {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 162.5%;
+  letter-spacing: 0.32px;
+  text-transform: capitalize;
+  p {
+    max-width: 570px;
+  }
+  .services-lists {
+    margin-top: 28px;
+    margin-bottom: 42px;
+
+    @include respond-below(md) {
+      margin-top: 18px;
+      margin-bottom: 25px;
+    }
+    ul {
+      li {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        &:not(:last-child) {
+          margin-bottom: 10px;
+
+          @include respond-below(md) {
+            margin-bottom: 5px;
+          }
+        }
+        i,
+        svg {
+          color: $theme-color;
+        }
+      }
+    }
+  }
+}
+.about-thumb {
+  border-radius: 15px;
+  overflow: hidden;
+}

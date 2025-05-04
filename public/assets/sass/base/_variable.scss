@@ -1,0 +1,156 @@
+:root {
+  --theme-color: #e26014;
+  --theme-color-rgb: 41,88,54,255;
+  --second-theme-color: #06202B;
+  --second-theme-color-rgb: 34, 55, 64;
+  --third-theme-color: #06202B;
+  --third-theme-color-rgb: 70, 91, 45;
+  --title-color: #141414;
+  --title-color-rgb: 20, 20, 20;
+  --body-color: #535b5f;
+  --body-color-rgb: 83, 91, 95;
+  --black-color: #000000;
+  --black-color-rgb: 0, 0, 0;
+  --white-color: #ffffff;
+  --white-color-rgb: 255, 255, 255;
+  --yellow-color: #fec624;
+  --success-color: #28a745;
+  --error-color: #dc3545;
+
+  --bg-color-1: #e26014;
+  --bg-color-1-rgb: 247, 146, 31;
+  --bg-color-2: #06202B;
+  --bg-color-2-rgb: 34, 55, 64;
+  --bg-color-3: #06202B;
+  --bg-color-3-rgb: 70, 91, 45;
+  --bg-color-4: #141414;
+  --bg-color-4-rgb: 20, 20, 20;
+  --bg-color-5: #d3d2d2;
+  --bg-color-5-rgb: 211, 210, 210;
+  --bg-color-6: #cfcfcf;
+  --bg-color-6-rgb: 207, 207, 207;
+  --bg-color-7: #d9d9d9;
+  --bg-color-7-rgb: 217, 217, 217;
+  --bg-color-8: #fefefe;
+  --bg-color-8-rgb: 254, 254, 254;
+  --bg-color-9: #915612;
+  --bg-color-9-rgb: 145, 86, 18;
+  --bg-color-10: #dadada;
+  --bg-color-10-rgb: 218, 218, 218;
+  --bg-color-11: #f1eadb;
+  --bg-color-11-rgb: 241, 234, 219;
+  --bg-color-12: #43a32d;
+  --bg-color-12-rgb: 67, 163, 45;
+  --bg-color-13: #d80808;
+  --bg-color-13-rgb: 217, 8, 8;
+
+  --vs-border-color: #e0e0e0;
+
+  --title-font: "Abril Fatface", serif;
+  --body-font: "Rubik", serif;
+  --bricolage-font: "Bricolage Grotesque", serif;
+  --poppins-font: "Poppins", serif;
+  --icon-font: "Font Awesome 6 Pro";
+  --main-container: 1300px;
+  --container-gutters: 30px;
+  --section-space: 120px;
+  --section-space-mobile: 80px;
+  --section-title-space: 80px;
+  --ripple-ani-duration: 5s;
+}
+
+// Color Variation
+$theme-color: var(--theme-color);
+$second-theme-color: var(--second-theme-color);
+$third-theme-color: var(--third-theme-color);
+$title-color: var(--title-color);
+$body-color: var(--body-color);
+$white-color: var(--white-color);
+$black-color: var(--black-color);
+$yellow-color: var(--yellow-color);
+$success-color: var(--success-color);
+$error-color: var(--error-color);
+$border-color: var(--vs-border-color);
+
+// Font Variation
+$icon-font: var(--icon-font);
+
+// Typography
+$title-font: var(--title-font);
+$body-font: var(--body-font);
+$body-font-size: 14px;
+$body-line-Height: 157.143%;
+$body-font-weight: 500;
+$p-line-Height: 1.63;
+$letter-spacing: 0.42px;
+
+// Device Variation
+$hd: 1921px; // Large Device Than 1920
+$xl: 1500px; // Extra large Device
+$ml: 1399px; // Medium Large Device
+$lg: 1199px; // Large Device (Laptop)
+$md: 991px; // Medium Device (Tablet)
+$sm: 767px; // Small Device
+$xs: 575px; // Extra Small Device
+
+// Spacing Count with 5x
+$space-count: 6;
+
+// Section Space  For large Device
+$space: var(--section-space);
+$space-extra: calc(var(--section-space) - 40px);
+
+// Section Space On small Device
+$space-mobile: var(--section-space-mobile);
+$space-mobile-extra: calc(var(--section-space-mobile) - 40px);
+
+// BG Color Mapping
+$bgcolorMap: ();
+$bgcolorMap: map-merge(
+  (
+    "theme": $theme-color,
+    // "smoke": $smoke-color,
+    "white": $white-color,
+    "black": $black-color,
+    "title": $title-color,
+  ),
+  $bgcolorMap
+);
+
+// Overlay Color Mapping
+$overlaycolorMap: ();
+$overlaycolorMap: map-merge(
+  (
+    "theme": $theme-color,
+    "title": $title-color,
+    "white": $white-color,
+    "black": $black-color,
+  ),
+  $overlaycolorMap
+);
+
+// Text Color Mapping
+$textColorsMap: ();
+$textColorsMap: map-merge(
+  (
+    "theme": $theme-color,
+    "title": $title-color,
+    "body": $body-color,
+    "white": $white-color,
+    "yellow": $yellow-color,
+    "success": $success-color,
+    "error": $error-color,
+  ),
+  $textColorsMap
+);
+
+// Font Mapping
+$fontsMap: ();
+$fontsMap: map-merge(
+  (
+    "icon": $icon-font,
+    "title": $title-font,
+    "body": $body-font,
+  ),
+  $fontsMap
+);

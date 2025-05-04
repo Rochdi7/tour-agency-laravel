@@ -1,0 +1,43 @@
+.vs-cta {
+  mask: url(../img/bg/cta-bg-top-shape.png),
+    url(../img/bg/cta-bg-bottom-shape.png), linear-gradient(#000 0 0);
+  mask-composite: exclude, exclude;
+  mask-position: center top, center bottom;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  position: relative;
+
+  @include respond-above(xl) {
+    background-size: 100% 100%;
+  }
+  .cta-icon-1,
+  .cta-icon-2 {
+    position: absolute;
+
+    @include respond-below(md) {
+      display: none;
+    }
+  }
+  .cta-icon-1 {
+    bottom: 220px;
+    left: 360px;
+    @include respond-below(xl) {
+      bottom: 200px;
+      left: 150px;
+    }
+  }
+  .cta-icon-2 {
+    top: 100px;
+    right: 390px;
+    @include respond-below(xl) {
+      top: 60px;
+      right: 200px;
+    }
+  }
+
+  .container {
+    @include respond-above(xl) {
+      padding-block: 20px;
+    }
+  }
+}

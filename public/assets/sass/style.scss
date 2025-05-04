@@ -1,0 +1,252 @@
+/*
+Template Name: Vecuro
+Template URL: https://tripix.com/
+Description: Tripix - Tours & Travels HTML5 Template
+Author: Vecuro
+Developer: Md Kaium Hossain
+Author URL: https://themeforest.net/user/vecuro_themes
+Version: 1.0.0
+*/
+
+/*=================================
+    CSS Index Here
+==================================*/
+/*
+01. Theme Base
+    1.1. Mixin
+    1.2. Function
+    1.3. Variable
+    1.4. Typography
+    1.5. Extend
+    1.6. Wordpress Default
+
+02. Reset
+    2.1. Container
+    2.2. Grid
+    2.3. Input
+    2.4. Slick Slider
+    2.5. Mobile Menu
+
+03. Utilities
+    3.1. Preloader
+    3.2. Buttons
+    3.3. Titles
+    3.4. Common
+    3.5. Font
+    3.6. Background
+    3.7. Text Color
+    3.8. Overlay
+    3.9. Animation
+    3.10. Icon
+    3.10. Search
+
+04. Template Style
+    4.1. widget
+    4.2. Header
+    4.3. Footer
+    4.4. Breadcrumb
+    4.5. Blog
+    4.6. Hero Area
+    4.7. Feature
+    4.8 Destination Gallery
+    4.9 Destination
+    4.10 Destination Details
+    4.11 Blog-single
+    4.12 Choose Us
+    4.13 partner
+    4.14 Top Place
+    4.15 Awards
+    4.16 Tour Package
+    4.17 Services
+    4.18 Travel Guides
+    4.19 Insta
+    4.20 Testimonial
+    4.21 Error
+    4.22 Accordion
+    4.23 About
+    4.24 Offer
+    4.25 Exclusive Gallery
+    4.26 CTA
+    4.27 Counter
+    4.28 Contact
+    4.29 Activities
+    4.30 Popup Search
+
+05. Spacing
+*/
+/*=================================
+    CSS Index End
+==================================*/
+
+/*=================================
+   01. Theme Base
+==================================*/
+/*------------------- 1.1. Mixin -------------------*/
+@import "base/mixin";
+
+/*------------------- 1.2. Function -------------------*/
+@import "base/function";
+
+/*------------------- 1.3. Variable-------------------*/
+@import "base/variable";
+
+/*------------------- 1.5. Reset -------------------*/
+@import "base/reset";
+
+/*------------------- 1.6. Responsive -------------------*/
+@import "base/responsive";
+
+/*------------------- 1.7. Wordpress Default -------------------*/
+@import "base/wpdefault";
+
+/*=================================
+    02. Reset
+==================================*/
+/*------------------- 2.1. Container -------------------*/
+@import "reset/container";
+
+/*------------------- 2.2. Grid -------------------*/
+@import "reset/grid";
+
+/*------------------- 2.3. Input -------------------*/
+@import "reset/input";
+
+/*------------------- 2.4. Slick Slider -------------------*/
+@import "reset/swiper-slider";
+
+/*------------------- 2.5. Mobile Menu -------------------*/
+@import "reset/vsmenu";
+
+/*=================================
+    03. Utilities
+==================================*/
+/*------------------- 3.1. Preloader -------------------*/
+@import "utilities/preloader";
+
+/*------------------- 3.2. Buttons -------------------*/
+@import "utilities/btns";
+
+/*------------------- 3.3. Titles -------------------*/
+@import "utilities/titles";
+
+/*------------------- 3.4. Common -------------------*/
+@import "utilities/common";
+
+/*------------------- 3.5. Font -------------------*/
+@import "utilities/font";
+
+/*------------------- 3.6. Background -------------------*/
+@import "utilities/background";
+
+/*------------------- 3.7. Text Color -------------------*/
+@import "utilities/text-color";
+
+/*------------------- 3.8. Overlay -------------------*/
+@import "utilities/overlay";
+
+/*------------------- 3.9. Animation -------------------*/
+@import "utilities/animation";
+
+/*------------------- 3.10. Icon -------------------*/
+@import "utilities/icon";
+
+/*------------------- 3.11. Search -------------------*/
+@import "utilities/sk_search";
+
+/*=================================
+    04. Template Style
+==================================*/
+
+/*------------------- 4.1. widget  -------------------*/
+@import "template/sections/sk_widget-sidebar";
+
+/*------------------- 4.2. Header  -------------------*/
+@import "template/headers/header";
+
+/*------------------- 4.3. Footer  -------------------*/
+@import "template/footers/sk_footer";
+
+/*------------------- 4.4. Breadcrumb  -------------------*/
+@import "template/sections/sk_breadcrumb";
+
+/*------------------- 4.5. Blog  -------------------*/
+@import "template/sections/sk_blog";
+
+/*------------------- 4.6. Hero Area  -------------------*/
+@import "template/sections/sk_hero";
+
+/*------------------- 4.7. Feature  -------------------*/
+@import "template/sections/sk_feature";
+
+/*------------------- 4.8 Destination Gallery  -------------------*/
+@import "template/sections/sk_destination-gallery";
+
+/*------------------- 4.9 Destination  -------------------*/
+@import "template/sections/sk_destination";
+
+/*------------------- 4.10 Destination Details  -------------------*/
+@import "template/sections/sk_destination-details";
+
+/*------------------- 4.11 Blog-single  -------------------*/
+@import "template/sections/sk_blog-single";
+
+/*------------------- 4.12 Choose Us  -------------------*/
+@import "template/sections/sk_choose-us";
+
+/*------------------- 4.13 partner  -------------------*/
+@import "template/sections/sk_partner";
+
+/*------------------- 4.14 Top Place  -------------------*/
+@import "template/sections/sk_top-place";
+
+/*------------------- 4.15 Awards  -------------------*/
+@import "template/sections/sk_awards";
+
+/*------------------- 4.16 Tour Package  -------------------*/
+@import "template/sections/sk_tour-package";
+
+/*------------------- 4.17 Services  -------------------*/
+@import "template/sections/sk_services";
+
+/*------------------- 4.18 Travel Guides  -------------------*/
+@import "template/sections/sk_travel-guides";
+
+/*------------------- 4.19 Insta  -------------------*/
+@import "template/sections/sk_insta";
+
+/*------------------- 4.20 Testimonial  -------------------*/
+@import "template/sections/sk_testimonial";
+
+/*------------------- 4.21 Error  -------------------*/
+@import "template/sections/sk_error";
+
+/*------------------- 4.22 Accordion  -------------------*/
+@import "template/sections/sk_accordion";
+
+/*------------------- 4.23 About  -------------------*/
+@import "template/sections/sk_about";
+
+/*------------------- 4.24 Offer  -------------------*/
+@import "template/sections/sk_offer";
+
+/*------------------- 4.25 Exclusive Gallery  -------------------*/
+@import "template/sections/sk_exclusive-gallery";
+
+/*------------------- 4.26 CTA  -------------------*/
+@import "template/sections/sk_cta";
+
+/*------------------- 4.27 Counter  -------------------*/
+@import "template/sections/sk_counter";
+
+/*------------------- 4.28 Contact  -------------------*/
+@import "template/sections/sk_contact";
+
+/*------------------- 4.29 Activities  -------------------*/
+@import "template/sections/sk_activities";
+
+/*------------------- 4.30 Popup Search  -------------------*/
+@import "template/sections/popupsearch-v1";
+/*=================================
+    05. Spacing
+==================================*/
+@import "spacing/spacing";

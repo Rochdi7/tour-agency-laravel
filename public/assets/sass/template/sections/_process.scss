@@ -1,0 +1,26 @@
+.process-layout1 {
+  padding: 130px 0;
+  @include md {
+    padding: 80px 0;
+  }
+}
+.process-content {
+  h3 {
+    font-size: 46px;
+    font-weight: 700;
+    color: var(--white-color);
+    text-transform: uppercase;
+    line-height: 52px;
+    span {
+      color: var(--theme-color);
+    }
+  }
+  p {
+    @include text-style1;
+    font-size: 15px;
+    line-height: 28px;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin-bottom: 40px;
+  }
+}

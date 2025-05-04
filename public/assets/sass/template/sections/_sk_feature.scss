@@ -1,0 +1,97 @@
+.vs-feature-style1 {
+  padding-block: 100px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+
+  .container {
+    position: relative;
+    &::before {
+      position: absolute;
+      content: "";
+      top: 50%;
+      left: -45px;
+      transform: skewX(-25deg) translateY(-50%);
+      width: 533px;
+      height: 83px;
+      background-color: var(--second-theme-color);
+      z-index: -1;
+
+      @include respond-below(xlg) {
+        width: 480px;
+        height: 60px;
+      }
+
+      @include respond-below(lg) {
+        width: 400px;
+        height: 60px;
+      }
+
+      @include respond-below(sm) {
+        content: unset;
+      }
+    }
+    &::after {
+      position: absolute;
+      content: "";
+      top: 50%;
+      left: 0;
+      transform: skewX(-25deg) translateX(-100%) translateY(-50%);
+      width: 10000px;
+      height: 83px;
+      background-color: var(--second-theme-color);
+      z-index: -1;
+
+      @include respond-below(xlg) {
+        height: 60px;
+      }
+
+      @include respond-below(lg) {
+        height: 60px;
+      }
+
+      @include respond-below(sm) {
+        content: unset;
+      }
+    }
+  }
+
+  h2 {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    text-shadow: 0px 4px 4px rgba(var(--black-color-rgb), 0.25);
+    font-size: 50px;
+    line-height: 0.78;
+    text-transform: capitalize;
+    opacity: 0.14;
+    z-index: -2;
+
+    @include respond-above(ssm) {
+      font-size: 110px;
+    }
+    @include respond-above(sm) {
+      font-size: 130px;
+    }
+    @include respond-above(md) {
+      font-size: 180px;
+    }
+    @include respond-above(lg) {
+      font-size: 230px;
+    }
+    @include respond-above(xl) {
+      font-size: 260px;
+    }
+    @include respond-above(xlg) {
+      font-size: 280px;
+    }
+  }
+
+  @include respond-below(lg) {
+    padding-block: 80px;
+  }
+  @include respond-below(md) {
+    padding-block: 50px;
+  }
+}

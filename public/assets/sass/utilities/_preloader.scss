@@ -1,0 +1,121 @@
+.preloader {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 999;
+  background-color: var(--title-color);
+
+  .vs-btn {
+    padding: 20px 20px;
+    border-radius: 0;
+    font-size: 18px;
+    font-weight: 700;
+    @include sm {
+      font-size: 16px;
+      padding: 15px 15px;
+    }
+    &::before,
+    &::after {
+      background-color: var(--white-color);
+    }
+    &:hover {
+      color: var(--theme-color);
+    }
+  }
+}
+
+.preloader-inner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    display: block;
+    margin: 0 auto 10px auto;
+  }
+}
+
+.loader {
+  animation: loaderspin 1.5s infinite;
+  height: 50px;
+  width: 50px;
+  display: block;
+
+  &:before,
+  &:after {
+    border-radius: 50%;
+    content: "";
+    display: block;
+    height: 20px;
+    width: 20px;
+  }
+
+  &:before {
+    animation: ball1 1.5s infinite;
+    background-color: $white-color;
+    box-shadow: 30px 0 0 $theme-color;
+    margin-bottom: 10px;
+  }
+
+  &:after {
+    animation: ball2 1.5s infinite;
+    background-color: $theme-color;
+    box-shadow: 30px 0 0 $title-color;
+  }
+}
+
+@keyframes loaderspin {
+  0% {
+    transform: rotate(0deg) scale(0.8);
+  }
+
+  50% {
+    transform: rotate(360deg) scale(1);
+  }
+
+  100% {
+    transform: rotate(720deg) scale(0.8);
+  }
+}
+
+@keyframes ball1 {
+  0% {
+    box-shadow: 30px 0 0 $theme-color;
+  }
+
+  50% {
+    box-shadow: 0 0 0 $theme-color;
+    margin-bottom: 0;
+    transform: translate(15px, 15px);
+  }
+
+  100% {
+    box-shadow: 30px 0 0 $theme-color;
+    margin-bottom: 10px;
+  }
+}
+
+@keyframes ball2 {
+  0% {
+    box-shadow: 30px 0 0 $white-color;
+  }
+
+  50% {
+    box-shadow: 0 0 0 $white-color;
+    margin-top: -20px;
+    transform: translate(15px, 15px);
+  }
+
+  100% {
+    box-shadow: 30px 0 0 $white-color;
+    margin-top: 0;
+  }
+}

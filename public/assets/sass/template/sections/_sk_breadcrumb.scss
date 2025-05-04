@@ -1,0 +1,117 @@
+.vs-breadcrumb {
+  padding: 168px 0 180px;
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: "";
+    width: 1006px;
+    height: 33px;
+    right: -30px;
+    bottom: 0;
+    background-color: rgba(var(--theme-color-rgb), 0.85);
+    transform: skewX(-56deg);
+  }
+
+  @include respond-below(lg) {
+    padding: 120px 0;
+    &::after {
+      width: 700px;
+      height: 25px;
+    }
+  }
+  @include respond-below(md) {
+    padding: 100px 0;
+    &::after {
+      width: 500px;
+      height: 20px;
+    }
+  }
+  @include respond-below(sm) {
+    padding: 60px 0;
+    &::after {
+      width: 250px;
+      height: 15px;
+    }
+  }
+}
+.vs-breadcrumb-icon-1,
+.vs-breadcrumb-icon-2 {
+  position: absolute;
+
+  @include respond-below(md) {
+    display: none;
+  }
+}
+.vs-breadcrumb-icon-1 {
+  left: 142px;
+  bottom: 60px;
+
+  @include respond-below(lg) {
+    left: 100px;
+  }
+  @include respond-below(md) {
+    left: 80px;
+  }
+}
+.vs-breadcrumb-icon-2 {
+  right: 340px;
+  top: 88px;
+  @include respond-below(lg) {
+    right: 200px;
+    top: 88px;
+  }
+  @include respond-below(md) {
+    right: 100px;
+  }
+}
+.breadcrumb-title {
+  color: $white-color;
+  font-size: 45px;
+  font-weight: 400;
+  line-height: 111.111%;
+  text-transform: capitalize;
+}
+.breadcrumb-menu {
+  margin-top: 10px;
+
+  @include respond-below(md) {
+    margin-top: 8px;
+  }
+
+  ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    li {
+      color: $white-color;
+      text-transform: capitalize;
+
+      a {
+        position: relative;
+        &::before {
+          font: var(--fa-font-sharp);
+          content: "\2f";
+          position: absolute;
+          right: -18px;
+          top: 50%;
+          transform: translateY(-50%);
+          color: $theme-color;
+        }
+        &::after {
+          font: var(--fa-font-sharp);
+          content: "\2f";
+          position: absolute;
+          right: -23px;
+          top: 50%;
+          transform: translateY(-50%);
+          color: $theme-color;
+        }
+      }
+      &:not(:has(a)) {
+        color: $theme-color;
+      }
+    }
+  }
+}

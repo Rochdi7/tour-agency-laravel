@@ -1,0 +1,163 @@
+.vs-offer {
+  position: relative;
+  overflow: hidden;
+  @include respond-below(md) {
+    padding: 60px 0;
+    background: var(--second-theme-color);
+  }
+
+  .offer-icon-1 {
+    position: absolute;
+    left: 70px;
+    top: -8px;
+    transform-origin: top left;
+  }
+
+  .title-area {
+    padding-right: 82.5px;
+    position: relative;
+    height: calc(100% - 10px);
+
+    @include respond-above(md) {
+      background-color: $third-theme-color;
+      &::before {
+        position: absolute;
+        content: "";
+        right: 0;
+        top: 0;
+        width: 5000%;
+        height: 100%;
+        background-color: $third-theme-color;
+        z-index: -1;
+      }
+      &::after {
+        position: absolute;
+        content: "";
+        right: 0;
+        bottom: -5px;
+        width: 5000%;
+        height: 10px;
+        background-image: url("../img/offer/offer-shap-1-1.svg");
+        background-size: contain;
+        background-position: right center;
+      }
+    }
+
+    @include respond-below(mlg) {
+      padding-right: 35px;
+    }
+    @include respond-below(md) {
+      padding-right: 0px;
+    }
+  }
+}
+.offer-info {
+  max-width: 475px;
+
+  @include respond-below(lg) {
+    max-width: 385px;
+  }
+  .offer-buy {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+  }
+}
+
+.offer-boxes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: 100%;
+  position: relative;
+  height: calc(100% - 10px);
+
+  @include respond-above(md) {
+    background-color: $second-theme-color;
+    &::before {
+      position: absolute;
+      content: "";
+      left: 0;
+      top: 0;
+      width: 5000%;
+      height: 100%;
+      background-color: $second-theme-color;
+      z-index: -2;
+    }
+    &::after {
+      position: absolute;
+      content: "";
+      left: 0;
+      bottom: -5px;
+      width: 5000%;
+      height: 10px;
+      background-image: url("../img/offer/offer-shap-1-2.svg");
+      background-size: contain;
+      background-position: right center;
+      z-index: -1;
+    }
+  }
+}
+.offer-box {
+  display: grid;
+  place-content: center;
+  text-align: center;
+  padding: 70px 10px;
+  border-top: 5px solid transparent;
+  @include smooth-transition;
+
+  @include respond-below(md) {
+    padding: 30px 0px;
+  }
+  &:not(:first-child) {
+    border-left: 1px dashed rgba(var(--white-color-rgb), 0.1);
+  }
+
+  .offer-thumb {
+    width: 147px;
+    height: 147px;
+    border-radius: 50%;
+    border: 6px solid var(--bg-color-11);
+    overflow: hidden;
+    margin: 0 auto;
+    @include smooth-transition;
+
+    @include respond-below(lg) {
+      width: 100px;
+      height: 100px;
+      border-width: 4px;
+    }
+    @include respond-below(ssm) {
+      width: 80px;
+      height: 80px;
+      border-width: 2px;
+    }
+  }
+  .offer-content {
+    margin-top: 32px;
+    .title {
+      font-weight: 400;
+      line-height: 1.1;
+      text-transform: capitalize;
+      margin-bottom: 15px;
+    }
+    span {
+      display: block;
+      color: $theme-color;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: 0.48px;
+      text-transform: capitalize;
+
+      @include respond-below(ssm) {
+        font-size: $body-font-size;
+      }
+    }
+  }
+  &:hover {
+    border-top-color: $theme-color;
+    .offer-thumb {
+      border-color: $theme-color;
+    }
+  }
+}
