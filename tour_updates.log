@@ -7,3 +7,4 @@ Add translations support (English/French) - Mon, May  5, 2025  1:14:41 AM
 initialize Laravel 12 project with TripRex template - Tue, May  6, 2025 12:59:29 PM
 set up environment variables and config caching - Tue, May  6, 2025 12:59:30 PM
 create users table migration - Tue, May  6, 2025 12:59:32 PM
+create tours table with relationships - Tue, May  6, 2025 12:59:34 PM
