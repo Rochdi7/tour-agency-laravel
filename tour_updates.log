@@ -4,3 +4,4 @@ Install TripRex HTML template into resources/views - Mon, May  5, 2025  1:14:38 
 Set up main route structure for home, tours, trips - Mon, May  5, 2025  1:14:39 AM
 Create models and migrations for Tour, Trip, Activity - Mon, May  5, 2025  1:14:40 AM
 Add translations support (English/French) - Mon, May  5, 2025  1:14:41 AM
+initialize Laravel 12 project with TripRex template - Tue, May  6, 2025 12:59:29 PM
