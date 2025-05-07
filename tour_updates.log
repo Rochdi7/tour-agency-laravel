@@ -9,3 +9,4 @@ set up environment variables and config caching - Tue, May  6, 2025 12:59:30 PM
 create users table migration - Tue, May  6, 2025 12:59:32 PM
 create tours table with relationships - Tue, May  6, 2025 12:59:34 PM
 add trip model and migration - Tue, May  6, 2025 12:59:35 PM
+implement activity model with category and images - Wed, May  7, 2025  6:49:37 PM
