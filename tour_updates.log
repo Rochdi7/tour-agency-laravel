@@ -15,3 +15,4 @@ implement comments system for posts - Wed, May  7, 2025  6:49:39 PM
 create categories and tags tables - Wed, May  7, 2025  6:49:39 PM
 add place model and pivot for tours - Wed, May  7, 2025  6:49:40 PM
 create tour_accommodations table - Fri, May  9, 2025 12:00:25 AM
+implement itinerary_days table - Fri, May  9, 2025 12:00:26 AM
