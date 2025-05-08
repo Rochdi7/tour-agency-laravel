@@ -18,3 +18,4 @@ create tour_accommodations table - Fri, May  9, 2025 12:00:25 AM
 implement itinerary_days table - Fri, May  9, 2025 12:00:26 AM
 add contact_submissions table - Fri, May  9, 2025 12:00:26 AM
 create inquiries and tour_inquiries tables - Fri, May  9, 2025 12:00:27 AM
+implement discount logic for activities - Fri, May  9, 2025 12:00:28 AM
