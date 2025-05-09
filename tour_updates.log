@@ -22,3 +22,4 @@ implement discount logic for activities - Fri, May  9, 2025 12:00:28 AM
 add subtitle and meta fields to activities - Fri, May  9, 2025 11:29:49 PM
 set up authentication scaffolding - Fri, May  9, 2025 11:29:50 PM
 implement TourController with CRUD operations - Fri, May  9, 2025 11:29:50 PM
+add TripController for frontend display - Fri, May  9, 2025 11:29:51 PM
