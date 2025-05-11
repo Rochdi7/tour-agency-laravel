@@ -28,3 +28,4 @@ implement BlogController with post-tag logic - Sun, May 11, 2025  5:37:51 PM
 add CommentController with AJAX handling - Sun, May 11, 2025  5:37:52 PM
 implement CategoryController for admin - Sun, May 11, 2025  5:37:53 PM
 create ContactController with validation - Sun, May 11, 2025  5:37:54 PM
+add SearchController for site-wide search - Sun, May 11, 2025  5:37:54 PM
