@@ -25,3 +25,4 @@ implement TourController with CRUD operations - Fri, May  9, 2025 11:29:50 PM
 add TripController for frontend display - Fri, May  9, 2025 11:29:51 PM
 create ActivityController with filter options - Fri, May  9, 2025 11:29:52 PM
 implement BlogController with post-tag logic - Sun, May 11, 2025  5:37:51 PM
+add CommentController with AJAX handling - Sun, May 11, 2025  5:37:52 PM
