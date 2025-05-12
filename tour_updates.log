@@ -32,3 +32,4 @@ add SearchController for site-wide search - Sun, May 11, 2025  5:37:54 PM
 create InquiryController and email trigger - Mon, May 12, 2025  4:24:49 PM
 implement HomeController for homepage content - Mon, May 12, 2025  4:24:52 PM
 create Filament resource for tours - Mon, May 12, 2025  4:24:54 PM
+implement trip resource in Filament - Mon, May 12, 2025  4:24:55 PM
