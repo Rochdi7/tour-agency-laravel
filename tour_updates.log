@@ -34,3 +34,4 @@ implement HomeController for homepage content - Mon, May 12, 2025  4:24:52 PM
 create Filament resource for tours - Mon, May 12, 2025  4:24:54 PM
 implement trip resource in Filament - Mon, May 12, 2025  4:24:55 PM
 add activity resource with gallery support - Mon, May 12, 2025  4:24:57 PM
+create blog resource with rich editor - Wed, May 14, 2025 11:34:35 AM
