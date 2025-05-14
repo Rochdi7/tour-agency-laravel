@@ -37,3 +37,4 @@ add activity resource with gallery support - Mon, May 12, 2025  4:24:57 PM
 create blog resource with rich editor - Wed, May 14, 2025 11:34:35 AM
 implement comment and tag management in admin - Wed, May 14, 2025 11:34:40 AM
 add contact message viewer in dashboard - Wed, May 14, 2025 11:34:45 AM
+create home.blade.php with hero and featured sections - Wed, May 14, 2025 11:34:48 AM
