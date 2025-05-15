@@ -41,3 +41,4 @@ create home.blade.php with hero and featured sections - Wed, May 14, 2025 11:34:
 implement tours/index.blade.php with filters - Wed, May 14, 2025 11:34:49 AM
 add tours/show.blade.php with gallery and overview - Thu, May 15, 2025  1:31:57 PM
 create trips/index and trips/show views - Thu, May 15, 2025  1:31:59 PM
+implement activities/index with icons - Thu, May 15, 2025  1:32:00 PM
