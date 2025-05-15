@@ -43,3 +43,4 @@ add tours/show.blade.php with gallery and overview - Thu, May 15, 2025  1:31:57 
 create trips/index and trips/show views - Thu, May 15, 2025  1:31:59 PM
 implement activities/index with icons - Thu, May 15, 2025  1:32:00 PM
 add activities/show with image modal - Thu, May 15, 2025  1:32:01 PM
+create blog/index with category filtering - Thu, May 15, 2025  1:32:03 PM
