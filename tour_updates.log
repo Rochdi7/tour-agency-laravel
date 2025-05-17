@@ -47,3 +47,4 @@ create blog/index with category filtering - Thu, May 15, 2025  1:32:03 PM
 add blog-details.blade.php with comments - Sat, May 17, 2025 12:36:30 PM
 create contact page view with form and map - Sat, May 17, 2025 12:36:32 PM
 add about page with team and story - Sat, May 17, 2025 12:36:32 PM
+implement FAQ section with collapsible items - Sat, May 17, 2025 12:36:33 PM
