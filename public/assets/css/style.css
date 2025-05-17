@@ -88,7 +88,7 @@ Version: 1.0.0
   --second-theme-color: #06202B;
   --second-theme-color-rgb: 34, 55, 64;
   --third-theme-color: #06202B;
-  --third-theme-color-rgb: 70, 91, 45;
+  --third-theme-color-rgb: 6, 32, 43;
   --title-color: #141414;
   --title-color-rgb: 20, 20, 20;
   --body-color: #535b5f;
@@ -214,13 +214,11 @@ ol {
 }
 
 a {
-  color: var(--body-color);
+  color: var(--white-color);
   text-decoration: none;
   outline: 0;
   transition: all ease 0.4s;
 }
-
-
 a:hover {
   color: var(--theme-color);
 }
@@ -348,7 +346,7 @@ h6 {
 @media (max-width: 1199px) {
   h1,
   .h1 {
-    font-size: 75px;
+    font-size: 1px;
   }
   h2,
   .h2 {
@@ -2726,7 +2724,6 @@ html.lenis body {
 }
 
 .bg-second-theme-color {
-  background-color: var(--second-theme-color);
 }
 
 .bg-third-theme-color {

@@ -98,54 +98,36 @@
 @section('content')
     <main>
     {{-- Banner Section --}}
-    <section class="vs-breadcrumb" data-bg-src="{{ asset('assets/img/moroccan-architecture-courtyard-orange-tree-tour-banner.jpg') }}">
-      {{-- 3. Lazy Loading Added --}}
-      <img
-        src="{{ asset('assets/img/icons/cloud.png') }}"
-        alt="Decorative cloud icon for tour list banner"
-        class="vs-breadcrumb-icon-1 animate-parachute"
-        loading="lazy" {{-- Lazy Loading Added --}}
-      />
-      {{-- 3. Lazy Loading Added --}}
-      <img
-        src="{{ asset('assets/img/icons/ballon-sclation.png') }}"
-        alt="Hot air balloon icon symbolizing Moroccan travel"
-        class="vs-breadcrumb-icon-2 animate-parachute"
-        loading="lazy" {{-- Lazy Loading Added --}}
-      />
+    <section class="vs-breadcrumb" data-bg-src="{{ asset('assets/img/moroccan-architecture-courtyard-orange-tree-tour-banner.webp') }}">
+    <img src="{{ asset('assets/img/icons/cloud.png') }}" alt="Decorative cloud icon"
+    class="vs-breadcrumb-icon-1 animate-parachute" loading="lazy" />
 
-      <div class="container">
-        <div class="row text-center">
-          <div class="col-12">
-            <div class="breadcrumb-content">
-              <h1 class="breadcrumb-title">
-                @if($placeName)
-                  Tours in {{ $placeName }}
-                @elseif($query)
-                  Search Results
-                @else
-                  Explore Our Tours
-                @endif
-              </h1>
+        <img src="{{ asset('assets/img/icons/ballon-sclation.png') }}" alt="Decorative hot air balloon icon"
+            class="vs-breadcrumb-icon-2 animate-parachute" loading="lazy" />
 
-              @if(isset($query) && $query)
-              <p class="text-white">Showing results for: "{{ $query }}"</p>
-              @endif
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12">
+                    <div class="breadcrumb-content">
+                    <h1 class="breadcrumb-title">Explore Our Tours</h1>
+                    <p class="breadcrumb-subtitle" style="color: white;">
+                        Discover the beauty and magic of Moroccan architecture and hidden gems.
+                    </p>
 
-              <figcaption class="image-caption" style="color: white; font-size: medium;">
-                A serene Moroccan courtyard with traditional arches and an orange tree in bloom, reflecting the charm of cultural tour experiences.
-              </figcaption>
+                        <figcaption class="image-caption visually-hidden">
+                        A serene Moroccan courtyard with traditional arches and an orange tree in bloom, reflecting the charm of cultural tour experiences.
+                    </figcaption>
 
-              <p class="visually-hidden">
-                Step into Morocco’s rich heritage with a visit to traditional courtyards and palaces.
-                This image captures the timeless beauty of Moroccan design, where intricate tilework, archways, and lush orange trees offer a peaceful glimpse into local architecture and culture.
-              </p>
+                        <p class="visually-hidden">
+                        Step into Morocco’s rich heritage with a visit to traditional courtyards and palaces.
+                        This image captures the timeless beauty of Moroccan design, where intricate tilework, archways, and lush orange trees offer a peaceful glimpse into local architecture and culture.
+                    </p>
+                    </div>
+                </div>
             </div>
-
-          </div>
         </div>
-      </div>
     </section>
+
 
     {{-- Tour Listing Section --}}
     <section class="vs-tour-package space">

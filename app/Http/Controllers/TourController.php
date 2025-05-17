@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use App\Models\Activity;
 class TourController extends Controller
 {
     /**
@@ -44,101 +45,81 @@ class TourController extends Controller
     {
         // --- Get Input Values ---
         $placeName = $request->input('place');
-        $searchDate = $request->input('searchDate'); // e.g., "2025-04-21"
-        $selectedGuests = $request->input('guests'); // e.g., "5"
+        $searchDate = $request->input('searchDate');
+        $selectedGuests = $request->input('guests');
 
-        // --- Fetch Data for Search Bar Dropdowns (needed for repopulating the form) ---
+        // --- Dropdown Locations ---
         $locations = Place::query()
             ->where(function ($query) {
-                $query->whereHas('tours')
-                    ->orWhereHas('activities'); // Include if searching both
+                $query->whereHas('tours')->orWhereHas('activities');
             })
             ->whereNotNull('name')
             ->where('name', '!=', '')
             ->orderBy('name')
-            ->distinct()
             ->pluck('name')
             ->unique();
 
-        // --- Build Tour Query Based on Filters ---
-        // If you want to search BOTH Tours and Activities, this needs more complex logic
-        // For now, focusing on Tours as per the controller's name
+        // --- Build Tour Query for Search ---
         $toursQuery = Tour::query()
-            ->with(['firstImage', 'places']) // Eager load necessary relations
+            ->with(['firstImage', 'places'])
             ->withCount('places');
 
-        // Filter by Place Name if provided
         if ($placeName) {
             $toursQuery->whereHas('places', function ($q) use ($placeName) {
                 $q->where('name', $placeName);
             });
         }
 
-        // Filter by Date (Month from searchDate matching best_season)
         if ($searchDate) {
             try {
                 $date = Carbon::parse($searchDate);
-                $monthAbbr = $date->format('M'); // Get 'Jan', 'Feb', 'Apr', etc.
-
-                // Filter where best_season (comma-separated) contains the month abbreviation
-                // Using CONCAT for safer matching (prevents matching 'Jan' in 'January')
+                $monthAbbr = $date->format('M');
                 $toursQuery->whereRaw('CONCAT(",", REPLACE(best_season, " ", ""), ",") LIKE ?', ["%," . $monthAbbr . ",%"]);
-                // Explanation of whereRaw:
-                // 1. REPLACE(best_season, " ", ""): Removes spaces (e.g., "Jan, Feb" -> "Jan,Feb")
-                // 2. CONCAT(",", ..., ","): Adds commas at start/end (e.g., ",Jan,Feb,")
-                // 3. LIKE "%,Apr,%": Matches if the month is present, surrounded by commas
-
             } catch (\Exception $e) {
-                // Handle invalid date format if necessary, maybe ignore filter
-                // Log::error("Invalid date format received: " . $searchDate);
+                // Handle invalid date if needed
             }
         }
 
-        // Filter by Guests (checking against group_size)
         if ($selectedGuests && is_numeric($selectedGuests)) {
             $guestCount = (int) $selectedGuests;
-
             $toursQuery->where(function ($query) use ($guestCount) {
-                // Case 1: group_size is a single number (e.g., "15") -> Max capacity
                 $query->orWhere(function ($q) use ($guestCount) {
-                    $q->where('group_size', 'REGEXP', '^[0-9]+$') // Check if it's purely numeric
+                    $q->where('group_size', 'REGEXP', '^[0-9]+$')
                         ->where(DB::raw('CAST(group_size AS UNSIGNED)'), '>=', $guestCount);
                 });
-
-                // Case 2: group_size is a range (e.g., "8-12") -> Check max end of range
                 $query->orWhere(function ($q) use ($guestCount) {
-                    // Matches patterns like number-number
                     $q->where('group_size', 'REGEXP', '^[0-9]+\s*-\s*[0-9]+$')
-                        // Extracts the number AFTER the hyphen and casts it
                         ->where(DB::raw('CAST(SUBSTRING_INDEX(group_size, "-", -1) AS UNSIGNED)'), '>=', $guestCount);
                 });
-
-                // Case 3: group_size is "X+" (e.g., "10+") -> Assume it can accommodate any number >= X
                 $query->orWhere(function ($q) use ($guestCount) {
-                    // Matches patterns like number+
                     $q->where('group_size', 'REGEXP', '^[0-9]+\s*\+$')
-                        // Extracts the number BEFORE the plus and checks if guest count meets the minimum
                         ->where(DB::raw('CAST(SUBSTRING_INDEX(group_size, "+", 1) AS UNSIGNED)'), '<=', $guestCount);
-                    // Alternatively, if "10+" means *always* available for groups, just include them:
-                    // ->orWhere('group_size', 'REGEXP', '^[0-9]+\s*\+$'); // Always include "X+" if any guest count > 0 selected
                 });
-
-                // Add other potential formats if necessary (e.g., "Up to 10")
-                // $query->orWhere(...)
             });
         }
 
-        // Get paginated results
-        $tours = $toursQuery->latest()->paginate(8); // Adjust pagination
+        $tours = $toursQuery->latest()->paginate(8); // Paginated tour list
 
-        // --- Return the View with Data ---
+        // --- Top Tours (Popular First) for Homepage Slider ---
+        $popularTours = Tour::where('is_popular', true)
+            ->with(['firstImage', 'places'])
+            ->get();
+
+        $nonPopularTours = Tour::where('is_popular', false)
+            ->whereNotIn('id', $popularTours->pluck('id'))
+            ->with(['firstImage', 'places'])
+            ->get();
+
+        $topTours = $popularTours->concat($nonPopularTours); // ✅ Popular first, then others
+
+        // --- Return View ---
         return view('tours-list', compact(
-            'tours',            // The filtered list of tours
-            'locations',        // Data for Destination dropdown (repopulation)
-            // Pass back selected values for form repopulation
+            'tours',
+            'locations',
             'placeName',
             'searchDate',
-            'selectedGuests'
+            'selectedGuests',
+            'topTours' // ✅ Used in your slider section
         ));
     }
 
@@ -328,5 +309,54 @@ class TourController extends Controller
             'selectedGuests' => null
         ]);
     }
+    public function showMultiDay()
+    {
+        $types = ['Garden Tours', 'Art Tours', 'Classical Tours'];
 
+        $tours = Tour::whereIn('tour_type', $types)
+            ->with(['firstImage', 'places'])
+            ->paginate(12);
+
+        // Activities will be completely removed
+        $activities = [];
+
+        return view('type-filter', [
+            'tours' => $tours,
+            'activities' => $activities,
+            'type' => 'Multi-Day Tours'
+        ]);
+    }
+
+
+
+    public function showOneDay()
+    {
+        // Tour types for One-Day
+        $types = ['City Tours', 'Day Trips', 'Local Experiences', 'Outdoor Activities'];
+
+        // Fetch data
+        $tours = Tour::whereIn('tour_type', $types)->with(['firstImage', 'places'])->paginate(12);
+        $activities = Activity::whereIn('tour_type', $types)->with(['images', 'category'])->paginate(12);
+
+        // Return the view
+        return view('type-filter', [
+            'tours' => $tours,
+            'activities' => $activities,
+            'type' => 'One-Day Tours'
+        ]);
+    }
+
+
+
+    public function showByType($type)
+    {
+        $tours = Tour::where('tour_type', $type)->with(['firstImage', 'places'])->paginate(12);
+        $activities = Activity::where('tour_type', $type)->with(['images', 'category'])->paginate(12);
+
+        return view('type-filter', [
+            'tours' => $tours,
+            'activities' => $activities,
+            'type' => $type
+        ]);
+    }
 }

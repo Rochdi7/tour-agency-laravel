@@ -5,85 +5,97 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Tag;
-use App\Models\Comment; // Import Comment model if used directly
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
-    // ... (getSidebarData method remains the same) ...
+    /**
+     * Get Sidebar Data for Blog Pages.
+     */
     private function getSidebarData()
     {
         $recentBlogs = Blog::latest()->take(5)->get();
         $categories = Category::withCount('blogs')
-                              ->having('blogs_count', '>', 0)
-                              ->orderBy('name', 'asc')
-                              ->get();
+            ->having('blogs_count', '>', 0)
+            ->orderBy('name', 'asc')
+            ->get();
         $tags = Tag::orderBy('name', 'asc')->get();
+        
         return compact('recentBlogs', 'categories', 'tags');
     }
 
-    // ... (index and search methods remain the same, using 'blog' view) ...
+    /**
+     * Display the Blog Index Page.
+     */
     public function index()
     {
-        $posts = Blog::with(['user', 'category', 'tags']) // Eager loads Blog's author (User)
-                     ->latest()
-                     ->paginate(10);
+        $posts = Blog::with(['user', 'category', 'tags'])
+            ->latest()
+            ->paginate(10);
+            
         $sidebarData = $this->getSidebarData();
-        return view('blog', compact('posts'), $sidebarData); // Uses 'blog.blade.php'
+        
+        return view('blog', compact('posts'), $sidebarData);
     }
 
+    /**
+     * Search Blog Posts.
+     */
     public function search(Request $request)
     {
         $query = $request->input('query');
+        
         if (empty($query)) {
             return redirect()->route('blog.index');
         }
-        $posts = Blog::with(['user', 'category', 'tags']) // Eager loads Blog's author (User)
-                     ->where(function ($q) use ($query) {
-                         $q->where('title', 'LIKE', "%{$query}%")
-                           ->orWhere('content', 'LIKE', "%{$query}%")
-                           ->orWhere('summary', 'LIKE', "%{$query}%");
-                     })
-                     ->latest()
-                     ->paginate(10)
-                     ->appends(['query' => $query]);
+
+        $posts = Blog::with(['user', 'category', 'tags'])
+            ->where(function ($q) use ($query) {
+                $q->where('title', 'LIKE', "%{$query}%")
+                    ->orWhere('content', 'LIKE', "%{$query}%")
+                    ->orWhere('summary', 'LIKE', "%{$query}%");
+            })
+            ->latest()
+            ->paginate(10)
+            ->appends(['query' => $query]);
+        
         $sidebarData = $this->getSidebarData();
-        return view('blog', compact('posts', 'query'), $sidebarData); // Uses 'blog.blade.php'
+        
+        return view('blog', compact('posts', 'query'), $sidebarData);
     }
 
-
     /**
-     * Display the specified blog post (details page).
-     *
-     * @param string $slug
-     * @return \Illuminate\View\View
+     * Display a Specific Blog Post with Comments.
      */
     public function show($slug)
     {
-        // Eager load Blog's author (user) and its comments (but not the comment's user)
         $post = Blog::with([
-                        'category',
-                        'tags',
-                        'user',     // User who wrote the blog post
-                        'comments'  // Comments belonging to the blog post
-                    ])
-                 ->where('slug', $slug)
-                 ->firstOrFail();
+            'category',
+            'tags',
+            'user',
+            'comments.replies'
+        ])
+        ->where('slug', $slug)
+        ->firstOrFail();
 
-        $previousPost = Blog::where('id', '<', $post->id)->orderBy('id', 'desc')->first();
-        $nextPost = Blog::where('id', '>', $post->id)->orderBy('id', 'asc')->first();
+        $previousPost = Blog::where('id', '<', $post->id)
+            ->orderBy('id', 'desc')
+            ->first();
+        $nextPost = Blog::where('id', '>', $post->id)
+            ->orderBy('id', 'asc')
+            ->first();
 
         $relatedPosts = Blog::where('id', '!=', $post->id)
-                           ->where('category_id', $post->category_id)
-                           ->latest()
-                           ->take(3)
-                           ->get();
+            ->where('category_id', $post->category_id)
+            ->latest()
+            ->take(3)
+            ->get();
 
         $sidebarData = $this->getSidebarData();
 
-        // Uses 'blog-details.blade.php'
         return view('blog-details', compact(
             'post',
             'previousPost',
@@ -93,13 +105,9 @@ class BlogController extends Controller
     }
 
     /**
-     * Store a newly created blog post in storage.
-     * Assigns the logged-in user as the author of the post.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\RedirectResponse
+     * Store a New Comment.
      */
-    public function store(Request $request, Blog $blog) // <-- Accept Blog model directly
+    public function storeComment(Request $request, $blogId)
     {
         $request->validate([
             'content' => 'required|string',
@@ -107,19 +115,38 @@ class BlogController extends Controller
             'email' => 'required|email|max:255',
         ]);
 
-        // No need for Blog::findOrFail($blogId) anymore, $blog is already loaded.
-
         Comment::create([
-            'blog_id' => $blog->id, // Use the injected $blog object's ID
+            'blog_id' => $blogId,
+            'parent_id' => null, // Root comment
             'name' => $request->name,
             'email' => $request->email,
             'content' => $request->content,
-            // Add other fields if needed (e.g., 'is_approved' => false)
         ]);
 
-        return redirect()->back()->with('success', 'Your comment has been submitted successfully!'); // Changed message slightly
+        return redirect()->back()->with('success', 'Your comment has been added successfully!');
     }
 
-    // ... (Optional showByCategory / showByTag methods) ...
+    /**
+     * Store a Reply to a Comment.
+     */
+    public function replyToComment(Request $request, $commentId)
+    {
+        $request->validate([
+            'content' => 'required|string',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+        ]);
 
+        $parentComment = Comment::findOrFail($commentId);
+
+        Comment::create([
+            'blog_id' => $parentComment->blog_id,
+            'parent_id' => $parentComment->id,
+            'name' => $request->name,
+            'email' => $request->email,
+            'content' => $request->content,
+        ]);
+
+        return redirect()->back()->with('success', 'Reply added successfully.');
+    }
 }

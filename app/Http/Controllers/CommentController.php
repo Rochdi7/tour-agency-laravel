@@ -6,25 +6,37 @@ use Illuminate\Http\Request;
 use App\Models\Blog;
 use App\Models\Comment;
 
+
 class CommentController extends Controller
 {
-    public function store(Request $request, $blogId)
+    public function show($id)
+    {
+        // Get all parent comments and their nested replies
+        $comments = Comment::where('blog_id', $id)
+            ->whereNull('parent_id')
+            ->with('replies')
+            ->orderBy('created_at', 'asc')
+            ->get();
+
+        return view('blog.show', compact('comments'));
+    }
+
+    public function store(Request $request, $id)
     {
         $request->validate([
-            'content' => 'required|string',
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
+            'content' => 'required',
+            'name' => 'required',
+            'email' => 'required|email'
         ]);
-
-        $blog = Blog::findOrFail($blogId);
 
         Comment::create([
-            'blog_id' => $blog->id,
+            'parent_id' => $request->parent_id,
+            'blog_id' => $id,
             'name' => $request->name,
             'email' => $request->email,
-            'content' => $request->content,
+            'content' => $request->content
         ]);
 
-        return redirect()->back()->with('success', 'Your comment has been posted!');
+        return redirect()->back()->with('success', 'Comment added successfully.');
     }
 }

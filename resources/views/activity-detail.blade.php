@@ -150,7 +150,7 @@
 @section('content')
 
 {{-- Breadcrumb Section --}}
-<section class="vs-breadcrumb" data-bg-src="{{ asset('assets/img/berber-terrace-atlas-mountains-imlil-morocco.jpg') }}"> {{-- Class untouched --}}
+<section class="vs-breadcrumb" data-bg-src="{{ asset('assets/img/berber-terrace-atlas-mountains-imlil-morocco.webp') }}"> {{-- Class untouched --}}
     {{-- ✅ 3. Lazy Loading for Images --}}
     <img
         src="{{ asset('assets/img/icons/cloud.png') }}"
@@ -218,7 +218,7 @@
                                 @if($activity->duration_days)
                                     <div class="destination-single-meta"> {{-- Class untouched --}}
                                         <h3>{{ $activity->duration_days }}</h3>
-                                        <span>{{ Illuminate\Support\Str::plural('Day', $activity->duration_days) }}</span>
+                                        <span>{{ Illuminate\Support\Str::plural('Hours', $activity->duration_days) }}</span>
                                     </div>
                                 @elseif($activity->duration)
                                     <div class="destination-single-meta"> {{-- Class untouched --}}
@@ -235,17 +235,39 @@
                         </div>
                         <div class="destination-single-info"> {{-- Class untouched --}}
                             {{-- Main Image --}}
-                            <figure class="destination-single-img d-block mb-4"> {{-- Class untouched --}}
-                                @php $image = $activity->images->first(); @endphp
-                                {{-- ✅ 3. Lazy Loading for Images --}}
-                                <img src="{{ getFeaturedImageUrl(optional($image)->image, 'assets/img/activity/activity-placeholder.png') }}"
-                                     alt="{{ optional($image)->caption ?: ($activity->title ?? 'Activity Image') }}" {{-- Alt text using caption or title --}}
-                                     class="w-100" {{-- Ensure responsiveness if needed --}}
-                                     loading="lazy"
-                                     {{-- Recommend adding width/height for performance --}}
-                                     {{-- width="X" height="Y" --}}
-                                />
-                            </figure>
+                            <figure class="destination-single-img d-block mb-4">
+    @php 
+        $image = $activity->images->first(); // Fetch the first image
+    @endphp
+
+    @if ($image)
+        <img src="{{ asset('storage/' . $image->image) }}" {{-- Image path from storage --}}
+             alt="{{ $image->alt ?? $activity->title }}" {{-- Alt text from database or activity title --}}
+             title="{{ $image->caption ?? $activity->title }}" {{-- Caption as title attribute --}}
+             class="w-100" {{-- Ensure responsiveness --}}
+             loading="lazy"
+             width="810" height="540" {{-- Optional: Add dimensions for CLS stabilization --}}
+             style="object-fit: cover;" {{-- Ensure consistent display --}}
+        />
+
+        @if($image->description)
+            {{-- Hidden description for SEO --}}
+            <div style="display: none;" aria-hidden="true">
+                {{ $image->description }}
+            </div>
+        @endif
+    @else
+        {{-- Placeholder image if none found --}}
+        <img src="{{ asset('assets/img/activity/activity-placeholder.png') }}"
+             alt="{{ $activity->title ?? 'Activity Image' }}"
+             class="w-100"
+             loading="lazy"
+             width="810" height="540"
+             style="object-fit: cover;"
+        />
+    @endif
+</figure>
+
 
                             <div class="destination-single-px"> {{-- Class untouched --}}
                                 {{-- Internal page navigation tabs --}}
@@ -415,18 +437,17 @@
                                 <hr class="my-5">
 
                                 {{-- Map Section --}}
-                                <div id="map" class="destination-map content-section mb-5"> {{-- Class untouched --}}
-                                     {{-- H4 for sub-section title - Appropriate --}}
-                                    <h4 class="title mb-3">Activity Location Map</h4> {{-- Class untouched --}}
-                                    @if($activity->map_embed_code)
-                                        <div class="map-embed-wrapper">
-                                             {{-- Outputting iframe - Ensure source is trusted. Added title and loading=lazy --}}
-                                            {!! str_replace('<iframe', '<iframe title="Map showing location for ' . e($activity->title) . '" loading="lazy"', $activity->map_embed_code) !!}
-                                        </div>
-                                    @else
-                                        <p>A map for this activity is currently unavailable.</p>
-                                    @endif
-                                </div>
+                                <div id="map" class="destination-map content-section mb-5">
+    <h4 class="title mb-3">Activity Location Map</h4>
+    @if($activity->map_embed_code)
+        <div class="map-embed-wrapper">
+            {!! str_replace('<iframe', '<iframe title="Map showing location for ' . e($activity->title) . '" loading="lazy"', $activity->map_embed_code) !!}
+        </div>
+    @else
+        <p>A map for this activity is currently unavailable.</p>
+    @endif
+</div>
+
                                 <hr class="my-5">
 
                                 {{-- Inquiry Form Section --}}
@@ -486,14 +507,22 @@
                                                         <input id="act_inq_phone" name="phone" type="tel" class="form-control @error('phone') is-invalid @enderror" placeholder="Enter Your Phone Number *" required value="{{ old('phone') }}" aria-label="Your Phone Number" autocomplete="tel"/>
                                                         @error('phone')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                                     </div>
-                                                    <div class="col-md-6 form-group">
-                                                        <label for="act_inq_arrival_date">Preferred Date</label>
-                                                        <input id="act_inq_arrival_date" name="arrival_date" type="date" class="form-control @error('arrival_date') is-invalid @enderror" value="{{ old('arrival_date') }}" min="{{ date('Y-m-d') }}" aria-label="Preferred Activity Date"/>
-                                                        @error('arrival_date')<div class="invalid-feedback">{{ $message }}</div>@enderror
-                                                    </div>
+                                                    <div class="col-md-6 form-group position-relative">
+    <label for="act_inq_arrival_date">Preferred Date</label>
+    <input id="act_inq_arrival_date" name="arrival_date" type="text"
+        class="form-control @error('arrival_date') is-invalid @enderror"
+        placeholder="Preferred Activity Date*" 
+        value="{{ old('arrival_date') }}" 
+        aria-label="Preferred Activity Date" 
+        aria-required="true" readonly />
+    @error('arrival_date')
+        <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
+</div>
+
                                                     <div class="col-md-6 form-group">
                                                         <label for="act_inq_duration_days">Duration (if applicable)</label>
-                                                        <input id="act_inq_duration_days" name="duration_days" type="text" class="form-control @error('duration_days') is-invalid @enderror" placeholder="e.g., Half Day, Full Day" value="{{ old('duration_days', $activity->duration ?? ($activity->duration_days ? $activity->duration_days.' '.Str::plural('Day', $activity->duration_days) : null) ) }}" aria-label="Activity Duration"/>
+                                                        <input id="act_inq_duration_days" name="duration_days" type="text" class="form-control @error('duration_days') is-invalid @enderror" placeholder="e.g., Half Day, Full Day" value="{{ old('duration_days', $activity->duration ?? ($activity->duration_days ? $activity->duration_days.' '.Str::plural('', $activity->duration_days) : null) ) }}" aria-label="Activity Duration"/>
                                                         @error('duration_days')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                                     </div>
                                                     <div class="col-md-6 form-group">
@@ -758,4 +787,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
+
+<!-- Flatpickr -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        flatpickr("#act_inq_arrival_date", {
+            dateFormat: "Y-m-d",       // Display format to the user
+            minDate: "today",          // Disable past dates
+            locale: "en"               // Force English
+        });
+    });
+</script>
+
 @endpush

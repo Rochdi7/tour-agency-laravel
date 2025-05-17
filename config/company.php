@@ -42,7 +42,7 @@ return [
 
     'socials' => [
         'twitter' => [
-            'url' => 'https://x.com/your_handle', // <-- EDIT THIS (Your actual URL)
+            'url' => 'https://x.com/mounirakajiayour_handle', // <-- EDIT THIS (Your actual URL)
             'icon' => 'fa-brands fa-x-twitter', // Font Awesome class (usually keep as is)
             'title' => 'Twitter/X',             // Tooltip text
         ],
@@ -52,7 +52,7 @@ return [
             'title' => 'Instagram',
         ],
         'linkedin' => [
-            'url' => 'https://www.linkedin.com/company/your_page', // <-- EDIT THIS (or # if none)
+            'url' => 'https://www.instagram.com/colored.morocco/company/your_page', // <-- EDIT THIS (or # if none)
             'icon' => 'fa-brands fa-linkedin-in',
             'title' => 'LinkedIn',
         ],

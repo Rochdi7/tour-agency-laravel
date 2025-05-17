@@ -16,4 +16,9 @@ class EditTour extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
+    protected function mutateFormDataBeforeSave(array $data): array
+    {
+        // dd($data); // Dump all form data before save to see what 'places' contains
+        return $data;
+    }
 }

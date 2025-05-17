@@ -20,26 +20,35 @@ $siteName = config('app.name', 'Your Site Name');
 {{-- Adding schema might be redundant or confusing as the page content isn't persistent. --}}
 
    <!--================= Breadcrumb Area start =================-->
-<section class="vs-breadcrumb" data-bg-src="{{ asset('assets/img/grand-theatre-de-rabat-404-hero.jpg') }}">
-    {{-- Decorative images - Lazy loading not critical here --}}
+   <section class="vs-breadcrumb" data-bg-src="{{ asset('assets/img/grand-theatre-de-rabat-404-hero.webp') }}">
     <img src="{{ asset('assets/img/icons/cloud.png') }}" alt="Decorative cloud icon"
-        class="vs-breadcrumb-icon-1 animate-parachute" />
+        class="vs-breadcrumb-icon-1 animate-parachute" loading="lazy" />
+
     <img src="{{ asset('assets/img/icons/ballon-sclation.png') }}" alt="Decorative hot air balloon icon"
-        class="vs-breadcrumb-icon-2 animate-parachute" />
+        class="vs-breadcrumb-icon-2 animate-parachute" loading="lazy" />
+
     <div class="container">
         <div class="row text-center">
             <div class="col-12">
                 <div class="breadcrumb-content">
-                    <h1 class="breadcrumb-title">Page Not Found</h1>
+                    <h1 class="breadcrumb-title" >Page Not Found</h1>
+                    <p class="breadcrumb-subtitle" style="color: white;">
+                        Oops! The page you are looking for doesn’t exist. Let's get you back on track.
+                    </p>
+
+                    <figcaption class="image-caption visually-hidden">
+                        High-resolution black and white photo of the Grand Theatre of Rabat, Morocco. Featuring bold futuristic architecture, this iconic landmark enhances your 404 error page with elegance and modern Moroccan design.
+                    </figcaption>
+
+                    <p class="visually-hidden">
+                        This stunning image captures the Grand Theatre of Rabat, a symbol of modern Moroccan architecture and cultural significance. Even when lost, beauty and elegance remain constant.
+                    </p>
                 </div>
-               
-                <p class="visually-hidden">
-                    High-resolution black and white photo of the Grand Theatre of Rabat, Morocco. Featuring bold futuristic architecture, this iconic landmark enhances your 404 error page with elegance and modern Moroccan design.
-                </p>
             </div>
         </div>
     </div>
 </section>
+
 <!--================= Breadcrumb Area end =================-->
 
 
@@ -79,7 +88,7 @@ $siteName = config('app.name', 'Your Site Name');
                             <p class="mb-2">Alternatively, you can:</p>
                             {{-- Preserved existing helpful links --}}
                             <ul class="list-unstyled d-flex flex-wrap justify-content-center gap-3">
-                                <li><a href="{{ route('tours.index') }}" class="text-link">Browse Tours</a></li>
+                                <li><a href="{{ route('destinations.index') }}" class="text-link">Browse Tours</a></li>
                                 <li><a href="{{ route('activities.index') }}" class="text-link">Explore Activities</a></li>
                                 <li><a href="{{ route('blog.index') }}" class="text-link">Read Our Blog</a></li>
                                 <li><a href="{{ route('contact.show') }}" class="text-link">Contact Us</a></li>

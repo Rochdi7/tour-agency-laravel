@@ -1,2 +1,5 @@
 User-agent: *
-Disallow:
+Disallow: /admin/
+Allow: /
+
+Sitemap: https://morocco-quest.com/sitemap.xml

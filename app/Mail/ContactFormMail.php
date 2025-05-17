@@ -24,7 +24,6 @@ class ContactFormMail extends Mailable
     {
         $this->formData = $formData;
     }
-
     /**
      * Get the message envelope.
      */
@@ -37,7 +36,7 @@ class ContactFormMail extends Mailable
             replyTo: [
                 new Address($senderEmail, $senderName)
             ],
-            subject: 'New Website Contact Form Submission from ' . ($senderName ?: $senderEmail),
+            subject: 'Morocco Quest Contact Form Submission - ' . ($senderName ?: $senderEmail),
         );
     }
 
@@ -57,5 +56,18 @@ class ContactFormMail extends Mailable
     public function attachments(): array
     {
         return [];
+    }
+    public function build()
+    {
+        $senderName = $this->formData['name'] ?? 'Visitor';
+        $senderEmail = $this->formData['email'] ?? 'noreply@example.com';
+
+        return $this->from($senderEmail, $senderName)
+            ->replyTo($senderEmail, $senderName)
+            ->subject('Morocco Quest Contact Form Submission - ' . $senderName)
+            ->markdown('emails.contact.form')
+            ->with([
+                'formData' => $this->formData,
+            ]);
     }
 }

@@ -44,6 +44,8 @@ class Activity extends Model
         'old_price_child',
         'discount',
         'discount_percentage',
+        'is_popular',
+        'map_embed_code'
     ];
 
     // Relationship to Images
@@ -86,4 +88,8 @@ class Activity extends Model
             }
         });
     }
+    public function firstImage()
+{
+    return $this->hasOne(ActivityImage::class)->orderBy('id');
+}
 }

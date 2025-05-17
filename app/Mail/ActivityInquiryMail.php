@@ -62,4 +62,18 @@ class ActivityInquiryMail extends Mailable
     {
         return [];
     }
+    public function build()
+    {
+        $senderName = $this->formData['name'] ?? 'Visitor';
+        $senderEmail = $this->formData['email'] ?? 'noreply@example.com';
+
+        return $this->from($senderEmail, $senderName)
+                    ->replyTo($senderEmail, $senderName)
+                    ->subject('Activity Inquiry: ' . $this->activity->title . ' (from ' . $senderName . ')')
+                    ->markdown('emails.activities.inquiry')
+                    ->with([
+                        'formData' => $this->formData,
+                        'activity' => $this->activity
+                    ]);
+    }
 }

@@ -66,4 +66,18 @@ class TourInquiryMail extends Mailable
     {
         return [];
     }
+    public function build()
+    {
+        $senderName = $this->formData['name'] ?? 'Visitor';
+        $senderEmail = $this->formData['email'] ?? 'noreply@example.com';
+
+        return $this->from($senderEmail, $senderName)
+                    ->replyTo($senderEmail, $senderName)
+                    ->subject('Tour Inquiry: ' . $this->tour->title . ' (from ' . $senderName . ')')
+                    ->markdown('emails.tours.inquiry')
+                    ->with([
+                        'formData' => $this->formData,
+                        'tour' => $this->tour
+                    ]);
+    }
 }

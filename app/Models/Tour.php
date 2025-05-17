@@ -20,9 +20,9 @@ class Tour extends Model
         'title',
         'slug',
         'overview',
-        'includes',         // <<< CORRECTED
+        'includes',         
         'excludes',
-        'subtitle',         // <<< CORRECTED
+        'subtitle',        
         'faq',
         'transportation',
         'accommodation',
@@ -39,8 +39,8 @@ class Tour extends Model
         'old_price_child',
         'discount',
         'duration_days',
-
-        // 'itinerary', // Decide if needed
+        'is_popular',
+        'map_embed_code'
     ];
 
     /**
@@ -53,7 +53,7 @@ class Tour extends Model
         'faq' => 'string', // Cast FAQ too if it's text/longtext
         'price_adult' => 'decimal:2', // Example cast for prices
         'price_child' => 'decimal:2', // Example cast for prices
-        'duration_days' => 'integer',
+        'duration_days' => 'string',
         'min_age' => 'integer',
         'max_age' => 'integer',
     ];

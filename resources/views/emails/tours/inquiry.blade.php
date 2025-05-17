@@ -19,7 +19,7 @@ You have received an inquiry regarding the following tour/activity:
 
 **Trip Details:**
 
-**Preferred Arrival Date:** {{ isset($formData['arrival_date']) ? \Carbon\Carbon::parse($formData['arrival_date'])->format('d M Y') : 'N/A' }}
+**Preferred Departure Date:** {{ isset($formData['arrival_date']) ? \Carbon\Carbon::parse($formData['arrival_date'])->format('d M Y') : 'N/A' }}
 **Preferred Duration:** {{ $formData['duration_days'] ?? 'N/A' }} days
 **Adults (>12):** {{ $formData['adults'] ?? 'N/A' }}
 **Children (2-11):** {{ $formData['children'] ?? '0' }}

@@ -97,7 +97,7 @@
       "name": "{{ $pageName }}", // Use the dynamic page title
       "description": "{{ $pageDescription }}", // Use the dynamic meta description
       "url": "{{ url()->current() }}", // URL of this specific archive/search/index page
-      "image": "{{ asset('assets/img/chefchaouen-blue-house-door-morocco-blog-hero.jpg') }}", // Main hero image for this page type
+      "image": "{{ asset('assets/img/chefchaouen-blue-house-door-morocco-blog-hero.webp') }}", // Main hero image for this page type
       @if($pageSchemaType === 'SearchResultsPage' && isset($query) && $query)
       "query": "input={{ e($query) }}", // Add the search query for SearchResultsPage
       @endif
@@ -121,49 +121,26 @@
 @section('content')
 
 {{-- Breadcrumb Section --}}
-<section
-    class="vs-breadcrumb"
-    data-bg-src="{{ asset('assets/img/chefchaouen-blue-house-door-morocco-blog-hero.jpg') }}"
->
-    {{-- Decorative Images: Added loading="lazy" --}}
-    <img src="{{ asset('assets/img/icons/cloud.png') }}"
-         alt="Decorative cloud icon"
-         class="vs-breadcrumb-icon-1 animate-parachute"
-         loading="lazy" {{-- Added Lazy Loading --}}
-         {{-- width="X" height="Y" --}} {{-- Recommend adding dimensions --}}
-         />
-    <img src="{{ asset('assets/img/icons/ballon-sclation.png') }}"
-         alt="Decorative hot air balloon icon"
-         class="vs-breadcrumb-icon-2 animate-parachute"
-         loading="lazy" {{-- Added Lazy Loading --}}
-         {{-- width="X" height="Y" --}} {{-- Recommend adding dimensions --}}
-         />
+<section class="vs-breadcrumb" data-bg-src="{{ asset('assets/img/chefchaouen-blue-house-door-morocco-blog-hero.webp') }}">
+    <img src="{{ asset('assets/img/icons/cloud.png') }}" alt="Decorative cloud icon"
+        class="vs-breadcrumb-icon-1 animate-parachute" loading="lazy" />
+
+    <img src="{{ asset('assets/img/icons/ballon-sclation.png') }}" alt="Decorative hot air balloon icon"
+        class="vs-breadcrumb-icon-2 animate-parachute" loading="lazy" />
+
     <div class="container">
         <div class="row text-center">
             <div class="col-12">
                 <div class="breadcrumb-content">
-                    {{-- Dynamic H1 (Unchanged - Logic is good) --}}
-                    <h1 class="breadcrumb-title">
-                        @if(isset($tag))
-                            Posts tagged with "{{ $tag->name }}"
-                        @elseif(isset($category))
-                            Blog Category: "{{ $category->name }}"
-                        @elseif(isset($query) && $query)
-                            Blog Search Results
-                        @else
-                            Latest News & Travel Blog
-                        @endif
-                    </h1>
-                     @if(isset($query) && $query) {{-- Display search query if applicable --}}
-                        <p class="text-white">Showing results for: "{{ e($query) }}"</p>
-                     @endif
+                    <h1 class="breadcrumb-title">Our Travel Blog</h1>
+                    <p class="breadcrumb-subtitle" style="color: white;">
+                        Discover inspiring stories, travel tips, and hidden gems of Morocco.
+                    </p>
 
-                     {{-- Caption (Unchanged) --}}
-                    <figcaption class="image-caption" style="color: white; font-size: medium;">
+                    <figcaption class="image-caption visually-hidden">
                         A vibrant blue house in Chefchaouen, Morocco, showcasing the town’s unique architecture and colorful charm.
                     </figcaption>
 
-                     {{-- Hidden description (Unchanged) --}}
                     <p class="visually-hidden">
                         Experience the serene beauty of Chefchaouen, Morocco’s Blue City. Famous for its painted streets and vibrant doors,
                         this peaceful mountain town is a favorite among travelers and photographers.
@@ -173,6 +150,7 @@
         </div>
     </div>
 </section>
+
 
 {{-- Main Blog Content Section --}}
 {{-- Schema.org Blog/CollectionPage/SearchResultsPage added via JSON-LD in head --}}
@@ -248,9 +226,9 @@
                                                 share <i class="fa-solid fa-share-nodes ms-2"></i>
                                             </span>
                                             <ul class="custom-ul">
-                                                <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(route('blog.show', $post->slug) ?? url('/')) }}" target="_blank" rel="noopener noreferrer" aria-label="Share {{ $post->title }} on Facebook"><i class="fa-brands fa-facebook-f"></i></a></li>
+                                                <li><a href="https://www.facebook.com/p/Colored-Morocco-100070928444096/sharer/sharer.php?u={{ urlencode(route('blog.show', $post->slug) ?? url('/')) }}" target="_blank" rel="noopener noreferrer" aria-label="Share {{ $post->title }} on Facebook"><i class="fa-brands fa-facebook-f"></i></a></li>
                                                 <li><a href="https://twitter.com/intent/tweet?url={{ urlencode(route('blog.show', $post->slug) ?? url('/')) }}&text={{ urlencode($post->title) }}" target="_blank" rel="noopener noreferrer" aria-label="Share {{ $post->title }} on X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a></li>
-                                                <li><a href="https://www.linkedin.com/shareArticle?mini=true&url={{ urlencode(route('blog.show', $post->slug) ?? url('/')) }}&title={{ urlencode($post->title) }}" target="_blank" rel="noopener noreferrer" aria-label="Share {{ $post->title }} on LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                                                <li><a href="https://www.instagram.com/colored.morocco/shareArticle?mini=true&url={{ urlencode(route('blog.show', $post->slug) ?? url('/')) }}&title={{ urlencode($post->title) }}" target="_blank" rel="noopener noreferrer" aria-label="Share {{ $post->title }} on LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -345,47 +323,139 @@
                     @endisset
 
                      {{-- Categories Widget --}}
-                     {{-- Check if $categories exists and has items --}}
-                     @isset($categories)
-                        @if ($categories->count() > 0)
-                            <div class="widget widget_categories">
-                                <h5 class="widget_title title-shep">Categories</h5>
-                                <ul class="custom-ul">
-                                    @foreach($categories as $cat)
-                                        {{-- $cat->slug: URL-friendly identifier for the category --}}
-                                        {{-- $cat->name: Display name of the category --}}
-                                        {{-- $cat->blogs_count: Number of blog posts in this category (assuming this attribute exists) --}}
-                                        <li>
-                                            {{-- Link to category archive page --}}
-                                            {{-- *** Using blog.category route as it's more likely for blog section *** --}}
-                                             <a href="{{ route('blog.category', $cat->slug) ?? '#' }}" aria-label="View posts in category {{ $cat->name }}">{{ $cat->name }}</a>
-
-                                            <span>({{ $cat->blogs_count ?? 0 }})</span>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
+@isset($categories)
+    @if ($categories->count() > 0)
+        <div class="widget widget_categories">
+            <h5 class="widget_title title-shep">Categories</h5>
+            <ul class="custom-ul">
+                @foreach($categories as $cat)
+                    <li>
+                        @if(!empty($cat->slug)) {{-- Check for non-empty slug --}}
+                            <a href="{{ route('category.show', ['category' => $cat->slug]) }}" aria-label="View posts in category {{ $cat->name }}">{{ $cat->name }}</a>
+                        @else
+                            <span title="Category {{ $cat->name }} (link currently unavailable)">{{ $cat->name }}</span> {{-- No link if slug is missing --}}
                         @endif
-                    @endisset
+                        <span>({{ $cat->blogs_count ?? 0 }})</span>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+@endisset
 
-                     {{-- Tags Widget --}}
-                     {{-- Check if $tags exists and has items --}}
-                     @isset($tags)
-                         @if ($tags->count() > 0)
-                            <div class="widget widget_meta">
-                                <h5 class="widget_title title-shep">Tags</h5>
-                                <div class="tagcloud">
-                                     @foreach($tags as $t)
-                                         {{-- $t->slug: URL-friendly identifier for the tag --}}
-                                         {{-- $t->name: Display name of the tag --}}
-                                         {{-- Link to tag archive page --}}
-                                         {{-- *** Using blog.tag route as it's more likely for blog section *** --}}
-                                         <a href="{{ route('blog.tag', $t->slug) ?? '#' }}" aria-label="View posts tagged with {{ $t->name }}">{{ $t->name }}</a>
-                                     @endforeach
-                                </div>
-                            </div>
-                        @endif
-                    @endisset
+{{-- Tags Widget --}}
+@isset($tags)
+    @if ($tags->count() > 0)
+        <div class="widget widget_meta">
+            <h5 class="widget_title title-shep">Tags</h5>
+            <div class="tagcloud">
+                 @foreach($tags as $t)
+                     @if(!empty($t->slug)) {{-- Check for non-empty slug --}}
+                         <a href="{{ route('tag.show', ['tag' => $t->slug]) }}" aria-label="View posts tagged with {{ $t->name }}">{{ $t->name }}</a>
+                     @else
+                         <span class="tag-cloud-link" title="Tag {{ $t->name }} (link currently unavailable)">{{ $t->name }}</span> {{-- No link if slug is missing, provide some basic styling if needed --}}
+                     @endif
+                 @endforeach
+            </div>
+        </div>
+    @endif
+@endisset
+<div class="widget">
+  <h5 class="widget_title title-shep">Follow Us</h5>
+  <div class="sidebar-gallery">
+    <div class="gallery-box">
+      <div class="post-thumb">
+        <img
+          src="{{ asset('assets/img/Desert-Camp-Morocco-Sunset-View-Lanterns-Palm-Trees.webp') }}"
+          alt="Desert Camp Morocco Sunset View Lanterns Palm Trees"
+          class="w-100"
+        />
+      </div>
+      <a
+        href="{{ asset('assets/img/Desert-Camp-Morocco-Sunset-View-Lanterns-Palm-Trees.webp') }}"
+        title="Gallery-1"
+        class=""
+      ></a>
+    </div>
+
+    <div class="gallery-box">
+      <div class="post-thumb">
+        <img
+          src="{{ asset('assets/img/Luxury-Dinner-Setup-Wedding-Morocco-Outdoor-Event.webp') }}"
+          alt="Luxury Dinner Setup Wedding Morocco Outdoor Event"
+          class="w-100"
+        />
+      </div>
+      <a
+        href="{{ asset('assets/img/Luxury-Dinner-Setup-Wedding-Morocco-Outdoor-Event.webp') }}"
+        title="Gallery-2"
+        class=""
+      ></a>
+    </div>
+
+    <div class="gallery-box">
+      <div class="post-thumb">
+        <img
+          src="{{ asset('assets/img/Moroccan-Gate-Fes-Tourists-Decorative-Architecture.webp') }}"
+          alt="Moroccan Gate Fes Tourists Decorative Architecture"
+          class="w-100"
+        />
+      </div>
+      <a
+        href="{{ asset('assets/img/Moroccan-Gate-Fes-Tourists-Decorative-Architecture.webp') }}"
+        title="Gallery-3"
+        class=""
+      ></a>
+    </div>
+
+    <div class="gallery-box">
+      <div class="post-thumb">
+        <img
+          src="{{ asset('assets/img/Moroccan-Palace-Restaurant-Elegant-Dining-Setup.webp') }}"
+          alt="Moroccan Palace Restaurant Elegant Dining Setup"
+          class="w-100"
+        />
+      </div>
+      <a
+        href="{{ asset('assets/img/Moroccan-Palace-Restaurant-Elegant-Dining-Setup.webp') }}"
+        title="Gallery-4"
+        class=""
+      ></a>
+    </div>
+
+    <div class="gallery-box">
+      <div class="post-thumb">
+        <img
+          src="{{ asset('assets/img/Moroccan-Riad-Pool-Night-View-Arch-Design.webp') }}"
+          alt="Moroccan Riad Pool Night View Arch Design"
+          class="w-100"
+        />
+      </div>
+      <a
+        href="{{ asset('assets/img/Moroccan-Riad-Pool-Night-View-Arch-Design.webp') }}"
+        title="Gallery-5"
+        class=""
+      ></a>
+    </div>
+
+    <div class="gallery-box">
+      <div class="post-thumb">
+        <img
+          src="{{ asset('assets/img/Traditional-Moroccan-Dining-Event-Outdoor-Lanterns.webp') }}"
+          alt="Traditional Moroccan Dining Event Outdoor Lanterns"
+          class="w-100"
+        />
+      </div>
+      <a
+        href="{{ asset('assets/img/Traditional-Moroccan-Dining-Event-Outdoor-Lanterns.webp') }}"
+        title="Gallery-6"
+        class=""
+      ></a>
+    </div>
+  </div>
+</div>
+
+                   
 
                 </aside>
             </div>

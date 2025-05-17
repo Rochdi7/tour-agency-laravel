@@ -21,7 +21,7 @@ You have received an inquiry regarding the following activity:
 
 {{-- Check if these fields exist and have values before displaying --}}
 @if(isset($formData['arrival_date']) && $formData['arrival_date'])
-**Preferred Arrival Date:** {{ \Carbon\Carbon::parse($formData['arrival_date'])->format('d M Y') }}
+**Preferred Departure Date :** {{ \Carbon\Carbon::parse($formData['arrival_date'])->format('d M Y') }}
 @endif
 @if(isset($formData['duration_days']) && $formData['duration_days'])
 **Preferred Duration:** {{ $formData['duration_days'] }} days

@@ -17,24 +17,8 @@ use App\Http\Controllers\TripController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\TourInquiryController;
 use App\Http\Controllers\ActivityInquiryController;
-// No need to import Models here unless used in closures
+use App\Http\Controllers\NewsletterController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-// ==================================
-// PUBLIC ROUTES
-// ==================================
-
-// --- Homepage ---
-// Logic moved to HomepageController for cleanliness
 Route::get('/', [HomepageController::class, 'index'])->name('home');
 
 // --- Search ---
@@ -46,11 +30,13 @@ Route::controller(BlogController::class)->prefix('blog')->name('blog.')->group(f
     Route::get('/', 'index')->name('index');
     Route::get('/search', 'search')->name('search'); // Keep if specific search logic needed that index doesn't handle
     Route::get('/{slug}', 'show')->name('show'); // Detail page uses slug
+    
 });
 // Blog related routes outside the main controller group
-Route::post('/blog/{blog}/comments', [CommentController::class, 'store'])->name('comments.store'); // Uses blog model binding (ID default)
 Route::get('/category/{category:slug}', [CategoryController::class, 'show'])->name('category.show'); // Uses category slug binding
 Route::get('/tag/{tag:slug}', [TagController::class, 'show'])->name('tag.show'); // Uses tag slug binding
+Route::post('comments/reply/{id}', [BlogController::class, 'replyToComment'])->name('comments.reply');
+Route::post('/comments/{id}', [CommentController::class, 'store'])->name('comments.store');
 
 // --- Tours ---
 Route::get('/destinations', [TourController::class, 'listPlaces'])->name('destinations.index');
@@ -107,3 +93,25 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
 
 });
 
+Route::get('/terms-and-conditions', function () {
+    return view('terms-and-conditions')->render();
+})->name('terms.conditions');
+
+Route::get('/cookie-policy', function () {
+    return view('cookie-policy');
+})->name('cookie.policy');
+Route::get('/privacy-policy', function () {
+    return view('privacy-policy');
+})->name('privacy.policy');
+
+Route::get('/category/{category:slug}', [CategoryController::class, 'show'])->name('category.show'); // Uses category slug binding
+Route::get('/tag/{tag:slug}', [TagController::class, 'show'])->name('tag.show');
+
+Route::get('/tours/type/multi-day', [TourController::class, 'showMultiDay'])->name('tours.multi_day');
+Route::get('/tours/type/one-day', [TourController::class, 'showOneDay'])->name('tours.one_day');
+
+// Route for Specific Type (Garden Tours, Art Tours, etc.)
+Route::get('/tours/type/{type}', [TourController::class, 'showByType'])->name('tours.type');
+Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
+
+Route::get('/sitemap.xml', [App\Http\Controllers\SitemapController::class, 'index'])->name('sitemap');

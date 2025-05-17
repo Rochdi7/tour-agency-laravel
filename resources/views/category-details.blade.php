@@ -65,7 +65,7 @@
       // URL of this specific category archive page
       "url": "{{ url()->current() }}",
        // You might use the category image here if available, or a default blog hero image
-      "image": "{{ asset('assets/img/default-blog-category-hero.jpg') }}", // Replace with a relevant category image or default
+      "image": "{{ asset('assets/img/default-blog-category-hero.webp') }}", // Replace with a relevant category image or default
       "mainEntity": { // The primary content is the list of blog posts
         "@type": "ItemList",
         // Contains details about each blog post listed on this specific page

@@ -161,26 +161,36 @@
 @section('content')
 
 <!--================= Breadcrumb Area start =================-->
-<section class="vs-breadcrumb" data-bg-src="{{ asset('assets/img/hassan-ii-mosque-arches-casablanca-morocco.jpg') }}">
-    {{-- Decorative images - Lazy loading not critical here --}}
-    <img src="{{ asset('assets/img/icons/cloud.png') }}" alt="Decorative cloud icon"
-        class="vs-breadcrumb-icon-1 animate-parachute" />
+<section class="vs-breadcrumb" data-bg-src="{{ asset('assets/img/hot-air-balloon-ride-morocco-desert-adventure.webp') }}">
+    <img src="{{ asset('assets/img/icons/fanous.png') }}" alt="Decorative cloud icon"
+       style="height: 200px;" class="vs-breadcrumb-icon-1 animate-parachute" loading="lazy" />
+
     <img src="{{ asset('assets/img/icons/ballon-sclation.png') }}" alt="Decorative hot air balloon icon"
-        class="vs-breadcrumb-icon-2 animate-parachute" />
+        class="vs-breadcrumb-icon-2 animate-parachute" loading="lazy" />
+
     <div class="container">
         <div class="row text-center">
             <div class="col-12">
                 <div class="breadcrumb-content">
-                    <h1 class="breadcrumb-title" style="color: #e26014;">Page Not Found</h1>
+                    <h1 class="breadcrumb-title" >Find Your Perfect Adventure</h1>
+                    <p class="breadcrumb-subtitle" style="color: white;">
+                    Search for the best tours, activities, and experiences across Morocco.
+                    </p>
+
+                    <figcaption class="image-caption visually-hidden">
+                    Discover the best tours, activities, and adventures across Morocco, from desert safaris to city explorations.
+                    </figcaption>
+
+                    <p class="visually-hidden">
+                    Explore the finest tours, activities, and adventure experiences across Morocco. From breathtaking desert safaris to vibrant city tours and luxurious getaways, find your perfect Moroccan adventure.
+                    </p>
                 </div>
-               
-                <p class="visually-hidden">
-                    A stunning view of sunrise casting long shadows through the arches of the Hassan II Mosque in Casablanca, Morocco. This iconic religious and cultural landmark showcases exquisite Moroccan-Islamic design with intricate stonework and grand symmetry.
-                </p>
             </div>
         </div>
     </div>
 </section>
+
+
 <!--================= Breadcrumb Area end =================-->
 <div class="container py-5">
     <h1 class="mb-4">

@@ -10,6 +10,7 @@ class Blog extends Model
     protected $fillable = [
         'title',
         'slug',
+        'subtitle',
         'summary',
         'content',
         'quote',
@@ -21,24 +22,24 @@ class Blog extends Model
         'featured_image_description',
         'category_id'
     ];
-    
+
 
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
-    
+
     public function tags()
     {
         return $this->belongsToMany(Tag::class, 'blog_tag');
     }
-    public function comments()
-{
-    return $this->hasMany(Comment::class);
-}
-public function user()
-{
-    return $this->belongsTo(User::class);
-}
+    public function comments() // Comments for this blog post
+    {
+        return $this->hasMany(Comment::class); // Assuming Comment model is App\Models\Comment
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
 }

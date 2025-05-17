@@ -19,7 +19,7 @@ class BlogSeeder extends Seeder
             'quote_author' => 'Explorer',
             'category_id' => 1,
             'written_by' => 'Admin',
-            'featured_image' => 'storage/images/blogs/default.jpg',
+            'featured_image' => 'storage/images/blogs/default.webp',
         ]);
     }
 }

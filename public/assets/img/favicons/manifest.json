@@ -1,29 +1,86 @@
 {
-  "name": "App",
+  "name": "MoroccoQuest",
+  "short_name": "MoroccoQuest",
+  "description": "Explore Morocco with the best travel experiences from MoroccoQuest. Discover breathtaking tours, excursions, and adventures.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "orientation": "portrait",
+  "scope": "/",
   "icons": [
     {
-      "src": "/android-icon-36x36.png",
+      "src": "{{ asset('assets/img/favicons/android-icon-36x36.png') }}",
       "sizes": "36x36",
-      "type": "image/png",
-      "density": "0.75"
+      "type": "image/png"
     },
     {
-      "src": "/android-icon-48x48.png",
+      "src": "{{ asset('assets/img/favicons/android-icon-48x48.png') }}",
       "sizes": "48x48",
-      "type": "image/png",
-      "density": "1.0"
+      "type": "image/png"
     },
     {
-      "src": "/android-icon-72x72.png",
+      "src": "{{ asset('assets/img/favicons/android-icon-72x72.png') }}",
       "sizes": "72x72",
-      "type": "image/png",
-      "density": "1.5"
+      "type": "image/png"
     },
     {
-      "src": "/android-icon-96x96.png",
+      "src": "{{ asset('assets/img/favicons/android-icon-96x96.png') }}",
       "sizes": "96x96",
-      "type": "image/png",
-      "density": "2.0"
+      "type": "image/png"
+    },
+    {
+      "src": "{{ asset('assets/img/favicons/android-icon-144x144.png') }}",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "{{ asset('assets/img/favicons/android-icon-192x192.png') }}",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "{{ asset('assets/img/favicons/apple-icon-180x180.png') }}",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "{{ asset('assets/img/favicons/favicon-96x96.png') }}",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "{{ asset('assets/img/favicons/ms-icon-144x144.png') }}",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Book a Tour",
+      "short_name": "Booking",
+      "description": "Quickly book a tour with MoroccoQuest",
+      "url": "/book-tour",
+      "icons": [
+        {
+          "src": "{{ asset('assets/img/favicons/android-icon-72x72.png') }}",
+          "sizes": "72x72",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Our Services",
+      "short_name": "Services",
+      "description": "Discover our travel services",
+      "url": "/services",
+      "icons": [
+        {
+          "src": "{{ asset('assets/img/favicons/android-icon-72x72.png') }}",
+          "sizes": "72x72",
+          "type": "image/png"
+        }
+      ]
     }
   ]
 }
