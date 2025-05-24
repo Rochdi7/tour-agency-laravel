@@ -68,3 +68,4 @@ create PDF export for bookings - Sat, May 24, 2025 10:56:46 PM
 enable Google Analytics tracking - Sat, May 24, 2025 10:56:47 PM
 add CSRF protection to forms - Sat, May 24, 2025 10:56:49 PM
 implement cookie consent for GDPR - Sat, May 24, 2025 10:56:50 PM
+create booking confirmation email template - Sat, May 24, 2025 10:56:52 PM
