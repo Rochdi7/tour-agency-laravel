@@ -72,3 +72,4 @@ create booking confirmation email template - Sat, May 24, 2025 10:56:52 PM
 add image compression on upload - Sun, May 25, 2025 10:42:21 PM
 update tour detail with what's included/excluded - Sun, May 25, 2025 10:42:23 PM
 implement search bar component - Sun, May 25, 2025 10:42:24 PM
+create reusable Blade components for layout - Sun, May 25, 2025 10:42:25 PM
