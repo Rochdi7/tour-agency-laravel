@@ -78,3 +78,4 @@ refactor form input components for reuse - Wed, May 28, 2025 11:28:21 PM
 implement rate limiting on contact form - Wed, May 28, 2025 11:28:34 PM
 create custom pagination Blade component - Wed, May 28, 2025 11:28:51 PM
 add featured flag support to tours - Wed, May 28, 2025 11:29:11 PM
+filter tours by group size and age range - Wed, May 28, 2025 11:29:26 PM
