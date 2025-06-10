@@ -90,3 +90,4 @@ implement English translation file - Mon, Jun  9, 2025  6:30:34 PM
 implement French translation file - Mon, Jun  9, 2025  6:30:35 PM
 set language selector in header - Mon, Jun  9, 2025  6:30:36 PM
 refactor booking logic into BookingService - Tue, Jun 10, 2025  7:19:46 PM
+style activity cards using Tailwind classes - Tue, Jun 10, 2025  7:19:54 PM
