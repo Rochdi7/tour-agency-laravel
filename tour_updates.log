@@ -107,3 +107,4 @@ update sitemap to include all slugs - Fri, Jun 20, 2025 12:19:38 PM
 create reusable section-title component - Sun, Jun 22, 2025 11:21:16 AM
 implement toast messages for contact forms - Sun, Jun 22, 2025 11:21:17 AM
 highlight top-rated tours on homepage - Sun, Jun 22, 2025 11:21:18 AM
+fix responsive breakpoint bug on tablets - Sun, Jun 22, 2025 11:21:18 AM
