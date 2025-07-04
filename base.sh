@@ -8,27 +8,20 @@ BRANCH="main"
 
 
 COMMIT_MESSAGES=(
-"create reusable section-title component"
-"implement toast messages for contact forms"
-"highlight top-rated tours on homepage"
-"fix responsive breakpoint bug on tablets"
-"update sitemap to include all slugs"
-"fix robots.txt to disallow admin paths"
-"add margin and spacing helpers"
-"include TripAdvisor widget on homepage"
+"add flag icons to language switcher"
+"create contact form submission alert"
+"use UUIDs for reservation reference"
+"add loading overlay on booking pages"
+"fix mobile view height for hero slider"
+"improve animation delay consistency"
+"use IntersectionObserver for animations"
+"include title tags on all pages"
+"implement fallback image on error"
 )
 
 
 
-# "add flag icons to language switcher"
-# "create contact form submission alert"
-# "use UUIDs for reservation reference"
-# "add loading overlay on booking pages"
-# "fix mobile view height for hero slider"
-# "improve animation delay consistency"
-# "use IntersectionObserver for animations"
-# "include title tags on all pages"
-# "implement fallback image on error"
+
 # "preload fonts for faster first render"
 # "extract Google Maps script into partial"
 # "add form error summary under inputs"
