@@ -115,3 +115,4 @@ use UUIDs for reservation reference - Fri, Jul  4, 2025  1:15:25 PM
 add loading overlay on booking pages - Fri, Jul  4, 2025  1:15:25 PM
 fix mobile view height for hero slider - Fri, Jul  4, 2025  1:15:26 PM
 preload fonts for faster first render - Fri, Jul 11, 2025  7:31:24 PM
+extract Google Maps script into partial - Fri, Jul 11, 2025  7:31:24 PM
