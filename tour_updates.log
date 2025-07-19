@@ -143,3 +143,4 @@ use pluralization in language files - Sat, Jul 19, 2025  5:59:46 PM
 show tour duration in card component - Sat, Jul 19, 2025  5:59:47 PM
 implement map location display in tour view - Sat, Jul 19, 2025  5:59:48 PM
 create admin-only view for message history - Sat, Jul 19, 2025  5:59:49 PM
+migrate old blog data to new schema - Sat, Jul 19, 2025  5:59:49 PM
