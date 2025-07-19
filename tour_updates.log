@@ -140,3 +140,4 @@ style section headers with gradient underline - Tue, Jul 15, 2025  1:12:27 AM
 fix invalid HTML nesting in blog layout - Tue, Jul 15, 2025  1:12:28 AM
 highlight top excursions on booking page - Tue, Jul 15, 2025  1:12:29 AM
 use pluralization in language files - Sat, Jul 19, 2025  5:59:46 PM
+show tour duration in card component - Sat, Jul 19, 2025  5:59:47 PM
