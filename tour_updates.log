@@ -146,3 +146,4 @@ create admin-only view for message history - Sat, Jul 19, 2025  5:59:49 PM
 migrate old blog data to new schema - Sat, Jul 19, 2025  5:59:49 PM
 Last touch verify - Sun, Jul 20, 2025  6:40:10 PM
 add review sorting by date or rating - Sun, Jul 20, 2025  6:40:11 PM
+show activity category name in listing - Sun, Jul 20, 2025  6:40:11 PM
